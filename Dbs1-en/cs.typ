@@ -29,35 +29,35 @@
     spacing: (2em, 3em),
     node(
       (0, 0),
-      text(fill: colors.purple)[Informations-\ anforderungen],
+      text(fill: colors.purple)[Information\ requirements],
       name: <info>,
       shape: pill,
       stroke: colors.purple,
     ),
     node(
       (2, 0),
-      text(fill: colors.red)[Datenverarbeitungs-\ anforderungen],
+      text(fill: colors.red)[Data processing\ requirements],
       name: <daten>,
       shape: pill,
       stroke: colors.red,
     ),
     node(
       (2, 2),
-      text(fill: colors.darkblue)[DBMS-\ Charakteristika],
+      text(fill: colors.darkblue)[DBMS\ characteristics],
       name: <dbms>,
       shape: pill,
       stroke: colors.darkblue,
     ),
     node(
       (2.1, 3),
-      text(fill: gr)[Hardware/BS-\ Charakteristika],
+      text(fill: gr)[Hardware/OS\ characteristics],
       name: <hw>,
       shape: pill,
       stroke: gr,
     ),
     node(
       (1, 0),
-      [Anforderungs-\ analyse],
+      [Requirements\ analysis],
       name: <anal>,
       fill: colors-l.blue,
       stroke: colors-l.blue,
@@ -65,10 +65,10 @@
     edge("->", text(
       style: "italic",
       fill: colors.black,
-    )[Anforderungs-\ spezifikation]),
+    )[Requirements\ specification]),
     node(
       (1, 1),
-      [Konzeptioneller\ DB-Entwurf],
+      [Conceptual\ DB design],
       name: <konz>,
       fill: colors-l.blue,
       stroke: colors-l.blue,
@@ -76,10 +76,10 @@
     edge("->", text(
       style: "italic",
       fill: colors.black,
-    )[Konzeptionelles\ Datenmodell]),
+    )[Conceptual\ data model]),
     node(
       (1, 2),
-      [Logischer\ DB-Entwurf],
+      [Logical\ DB design],
       name: <log>,
       fill: colors-l.blue,
       stroke: colors-l.blue,
@@ -87,10 +87,10 @@
     edge("->", text(
       style: "italic",
       fill: colors.black,
-    )[Logisches\ Datenmodell]),
+    )[Logical\ data model]),
     node(
       (1, 3),
-      [Physischer\ Entwurf],
+      [Physical\ design],
       name: <phys>,
       fill: colors-l.blue,
       stroke: colors-l.blue,
@@ -98,7 +98,7 @@
     edge("->", text(
       style: "italic",
       fill: colors.black,
-    )[\ \ Physisches\ Datenmodell\ (Schema)]),
+    )[\ \ Physical\ data model\ (Schema)]),
     node(
       (1, 4),
       [\ ],
@@ -109,19 +109,19 @@
     ),
     node(
       (0, 1),
-      text(fill: yl)[(1) UML-\ Klassendiagramm],
+      text(fill: yl)[(1) UML\ class diagram],
       name: <uml>,
       stroke: none,
     ),
     node(
       (0, 2),
-      text(fill: yl)[(2) Relationale\ Schreibweise],
+      text(fill: yl)[(2) Relational\ notation],
       name: <rel>,
       stroke: none,
     ),
     node(
       (0, 3),
-      text(fill: yl)[(3) DB-Schema\ (PG SQL)],
+      text(fill: yl)[(3) DB schema\ (PG SQL)],
       name: <sql>,
       stroke: none,
     ),
@@ -140,50 +140,60 @@
   )
 }
 
-= Glossar
+= Glossary
 
-#deftbl(
+#deftblge(
   [Impedance-Mismatch],
-  [Diskrepanz zwischen Datenstrukturen auf Applikations- und Datenbankebene],
-
+  [Impedance-Mismatch],
+  [Mismatch between data structures at the application and database levels],
   [System-/Datenkatalog],
-  [Enthält Metadaten über die Datenbankobjekte, z.B. Tabellen und Schemata.],
-
+  [System/data catalog],
+  [Contains metadata about database objects, e.g. tables and schemas.],
   [Datenbankschema],
-  [Struktur einer Datenbank, die die Organisation der Daten und Beziehungen beschreibt.],
-
+  [Database schema],
+  [Structure of a database describing the organization of data and relationships.],
   [Datenbasis],
-  [Der physische Speicherort],
+  [Data store],
+  [The physical storage location],
   [Surrogate Key],
-  [Künstlich generierter PK],
+  [Surrogate Key],
+  [Artificially generated PK],
   [Referentielle\ Integrität],
-  [Fremdschlüssel muss zu einem Wert der referenzierten Tabelle oder NULL zeigen],
-
+  [Referential\ integrity],
+  [A foreign key must reference a value in the referenced table or NULL],
   [Datenunabhängigkeit],
-  [Daten in einer DB ändern können, ohne dass Anwendungen geändert werden müssen],
-
+  [Data independence],
+  [Ability to change data in a DB without having to change applications],
   [Data Pages],
-  [Kleinste Speicher-Dateneinheiten einer DB],
+  [Data Pages],
+  [Smallest data storage units of a DB],
   [Heaps],
-  [Unsortierte Datenorganisation],
+  [Heaps],
+  [Unsorted data organization],
   [Semantische\ Integrität],
-  [Daten sind nicht nur syntaktisch, sondern auch inhaltlich korrekt, insbesondere nach T],
-
+  [Semantic\ integrity],
+  [Data is correct in both syntax and content, especially after transactions],
   [Data dictionary],
-  [Zentrale Sammlung von Metadaten über die Daten im DBMS],
+  [Data dictionary],
+  [Central collection of metadata about the data in the DBMS],
 )
-= Datenbankmodelle
-#deftbl(
+= Database models
+#deftblge(
   [Hierarchisch],
-  [Daten sind in einer baumartigen Struktur geordnet],
+  [Hierarchical],
+  [Data is arranged in a tree-like structure],
   [Netzwerk],
-  [Flexiblere Struktur als hierarchisch, Erlaubt mehrere Pfade zwischen Entitäten],
+  [Network],
+  [More flexible structure than hierarchical; allows multiple paths between entities],
   [Objektorientiert],
-  [Speichert Daten und ihr Verhalten in Form von Obj.],
+  [Object-oriented],
+  [Stores data and its behavior as objects],
   [Objektrelational],
-  [Kombiniert objektorientierte + relationale Prinzipien],
+  [Object-relational],
+  [Combines object-oriented + relational principles],
   [Relational],
-  [Speichert Daten in Tabellen (Relationen) und verwaltet Beziehungen durch Schlüssel],
+  [Relational],
+  [Stores data in tables (relations) and manages relationships using keys],
 )
 #let app = (..b) => node(shape: pill, inset: 3pt, ..b)
 #grid(
@@ -191,10 +201,10 @@
   [
     1-Tier \
     #diagram(
-      node((0, 0.3), "Gerät", stroke: none),
-      app((0, 1), "Applikation"),
+      node((0, 0.3), "Device", stroke: none),
+      app((0, 1), "Application"),
       edge("<->"),
-      app((0, 3), [Lokale\ Datenbank]),
+      app((0, 3), [Local\ database]),
       node(enclose: ((0, 0), (0, 3))),
     )
   ],
@@ -202,12 +212,12 @@
     2-Tier \
     #diagram(
       node((0, 0.3), "Client", stroke: none, name: <cl>),
-      app((0, 1), "Applikation", name: <app>),
+      app((0, 1), "Application", name: <app>),
       edge("<-"),
-      node((0, 2), "Netzwerk", stroke: none),
+      node((0, 2), "Network", stroke: none),
       edge("->"),
       node((0, 3), "Server", stroke: none, name: <srv>),
-      app((0, 3.7), "Datenbank", name: <db>),
+      app((0, 3.7), "Database", name: <db>),
       node(enclose: (<cl>, <app>)),
       node(enclose: (<srv>, <db>)),
     )
@@ -216,13 +226,13 @@
     3-Tier \
     #diagram(
       node((0, 0.3), "Client", stroke: none),
-      app((0, 1), "Applikation"),
+      app((0, 1), "Application"),
       edge("<-"),
-      node((0, 2), "Netzwerk", stroke: none),
+      node((0, 2), "Network", stroke: none),
       edge("->"),
       node((0, 3), "Server", stroke: none),
-      app((0, 3.7), "Applikationsserver", name: <srv>),
-      app((0, 5), "Datenbank", name: <db>),
+      app((0, 3.7), "Application server", name: <srv>),
+      app((0, 5), "Database", name: <db>),
       edge(<srv>, <db>, "<->"),
       node(enclose: ((0, 0.3), (0, 1))),
       node(enclose: ((0, 3), <srv>, <db>)),
@@ -230,33 +240,33 @@
   ],
 )
 == DataBase System (DBS) \
-Besteht aus DBMS und Datenbasen \
+Consists of a DBMS and data stores \
 == DataBase Management System (DBMS) \
 #grid(
   columns: (auto, auto),
   [
-    - `(A)` Transaktionen
-    - `(C)` Konsistenz
-    - `(I)` Mehrbenutzerbetrieb
-    - `(D)` Grosse Datenmengen
-    - `(D)` Sicherheit
+    - `(A)` Transactions
+    - `(C)` Consistency
+    - `(I)` Multi-user operation
+    - `(D)` Large amounts of data
+    - `(D)` Security
   ],
   [
-    - Datentypen
-    - Abfragesprache
+    - Data types
+    - Query language
     - Backup & Recovery
-    - Redundanzfreiheit
-    - Kapselung
+    - Freedom from redundancy
+    - Encapsulation
   ],
 )
-#colbreak()
-== ANSI Modell \
-/ Logische Ebene: Logische Struktur der Daten \
-/ Interne Ebene: Speicherstrukturen, Definition durch internes Schema (Beziehungen, Tabellen etc.) \
-/ Externe Ebene: Sicht einer Benutzerklasse auf Teilmenge der DB, Definition durch externes Schema  \
-/ Mapping: Zwischen den Ebenen ist eine mehr oder weniger komplexe Abbildung notwendig \
-== Relationales Modell \
-PK sind #underline("unterstrichen"), FK sind #text(style: "italic", "kursiv") \
+// #colbreak()
+== ANSI model \
+/ Logical level: Logical structure of the data \
+/ Internal level: Storage structures, defined by the internal schema (relationships, tables, etc.) \
+/ External level: A user class's view of a subset of the DB, defined by an external schema \
+/ Mapping: A more or less complex mapping is required between the levels \
+== Relational model \
+PKs are #underline("underlined"), FKs are #text(style: "italic", "italicized") \
 tabellenname ( \
 #h(1em) #underline("id") SERIAL PRIMARY KEY, \
 #h(1em) grade DECIMAL(2,1) NOT NULL, \
@@ -272,48 +282,48 @@ tabellenname ( \
 #diagram(
   node-stroke: none,
   spacing: (16pt, 1em),
-  node(..nw2, (1, 1), nt2("Eins"), name: <fst>),
+  node(..nw2, (1, 1), nt2("One"), name: <fst>),
   node(..nw3, (2, 1), "", name: <fst2>),
   edge(<fst>, <fst2>, "1-"),
-  node(..nw2, (3, 1), nt2("Mehrere"), name: <snd>),
+  node(..nw2, (3, 1), nt2("Many"), name: <snd>),
   node(..nw3, (4, 1), "", name: <snd2>),
   edge(<snd>, <snd2>, "n-"),
 
-  node(..nw2, (1, 2), nt2[Eins (zwingend)], name: <trd>),
+  node(..nw2, (1, 2), nt2[One (mandatory)], name: <trd>),
   node(..nw3, (2, 2), "", name: <trd2>),
   edge(<trd>, <trd2>, "1!-"),
-  node(..nw2, (3, 2), nt2[Mehrere (mind. 1)], name: <frt>),
+  node(..nw2, (3, 2), nt2[Many (at least 1)], name: <frt>),
   node(..nw3, (4, 2), "", name: <frt2>),
   edge(<frt>, <frt2>, "n!-"),
 
-  node(..nw2, (1, 3), nt2[0 oder eins], name: <fth>),
+  node(..nw2, (1, 3), nt2[0 or one], name: <fth>),
   node(..nw3, (2, 3), "", name: <fth2>),
   edge(<fth>, <fth2>, "1?-"),
-  node(..nw2, (3, 3), nt2[0 oder mehrere], name: <sxt>),
+  node(..nw2, (3, 3), nt2[0 or many], name: <sxt>),
   node(..nw3, (4, 3), "", name: <sxt2>),
   edge(<sxt>, <sxt2>, "n?-"),
 
-  node(..nw2, (1, 4), nt2("Assoziation"), name: <nnt>),
+  node(..nw2, (1, 4), nt2("Association"), name: <nnt>),
   node(..nw3, (2, 4), "", name: <nnt2>),
   edge(<nnt>, <nnt2>, "straight-"),
-  node(..nw2, (3, 4), nt2("Komposition"), name: <ttt>),
+  node(..nw2, (3, 4), nt2("Composition"), name: <ttt>),
   node(..nw3, (4, 4), "", name: <ttt2>),
   edge(<ttt>, <ttt2>, "composition-"),
 
   node(..nw2, (1, 5), nt2("Aggregation"), name: <ele>),
   node(..nw3, (2, 5), "", name: <ele2>),
   edge(<ele>, <ele2>, "aggregation-"),
-  node(..nw2, (3, 5), nt2("Vererbung"), name: <twt>),
+  node(..nw2, (3, 5), nt2("Inheritance"), name: <twt>),
   node(..nw3, (4, 5), "", name: <twt2>),
   edge(<twt>, <twt2>, "inheritance-"),
 )
 
-/ Complete: Alle Subklassen sind definiert \
-/ Incomplete: Zusätzliche Subklassen sind erlaubt \
-/ Disjoint: Ist Instanz von genau einer Unterklasse \
-/ Overlapping: Kann Instanz von mehreren überlappenden Unterklassen sein \
-= Normalisierung \
-/ 1NF: Atomare Attributwerte: _track_  aufteilen \
+/ Complete: All subclasses are defined \
+/ Incomplete: Additional subclasses are allowed \
+/ Disjoint: An instance of exactly one subclass \
+/ Overlapping: Can be an instance of multiple overlapping subclasses \
+= Normalization \
+/ 1NF: Atomic attribute values: split _track_ \
 #grid(
   columns: (5fr, auto, 6fr),
   sqltbl(
@@ -334,8 +344,8 @@ tabellenname ( \
     [Song \#1],
   ),
 )
-/ 2NF: Nichtschlüsselattr. voll vom Schlüssel abhängig.
-Ist PK atomar, dann 2NF gegeben. Im Beispiel sind nicht alle Attribute des PK notwendig, um _album_ eindeutig zu identifizieren \
+/ 2NF: Non-key attributes fully depend on the key.
+If the PK is atomic, 2NF is satisfied. In the example, not all PK attributes are needed to uniquely identify _album_ \
 #sqltbl(
   columns: (1fr, 1fr, 1fr, 1fr),
   tf[track],
@@ -374,7 +384,7 @@ Ist PK atomar, dann 2NF gegeben. Im Beispiel sind nicht alle Attribute des PK no
     [Repeater],
   ),
 )
-/ 3NF: Keine transitiven Abhängigkeiten: _land_ ist abhängig von _interpret_ \
+/ 3NF: No transitive dependencies: _land_ depends on _interpret_ \
 #sqltbl(
   columns: (1fr, 2fr, 2fr, 1fr),
   tf[id],
@@ -412,14 +422,14 @@ Ist PK atomar, dann 2NF gegeben. Im Beispiel sind nicht alle Attribute des PK no
     [USA],
   ),
 )
-/ BCNF: Nur abhängigkeiten vom Schlüssel \
-/ (Voll-)funktionale Abhängigkeit: B hängt von A ab, zu jedem Wert von A gibt es genau einen Wert von B ($A -> B$) \
-/ Teilweise funkt. Abh.: B hängt von A ab, aber auch von einem Teil eines zusammengesetzten Schlüssels. \
-/ Transitive Abhängigkeit: B hängt vom Attribut A ab, C hängt von B ab ($A -> B and B -> C => A -> C$) \
-/ Denormalisierung: In geringere NF zurückführen (Verbessert Performance und reduziert Joins-Komplexität) \
-== Anomalien \
-Einfügeanomalie, Löschanomalie, Änderungsanomalie \
-#colbreak()
+/ BCNF: Only dependencies on the key \
+/ (Full) functional dependency: B depends on A; for each value of A there is exactly one value of B ($A -> B$) \
+/ Partial functional dependency: B depends on A, but also on part of a composite key. \
+/ Transitive dependency: B depends on attribute A, C depends on B ($A -> B and B -> C => A -> C$) \
+/ Denormalization: Reverting to a lower NF (improves performance and reduces join complexity) \
+== Anomalies \
+Insertion anomaly, deletion anomaly, update anomaly \
+// #colbreak()
 = Data Control Language (DCL) \
 #{
   show raw: set text(size: 4pt)
@@ -434,7 +444,7 @@ Einfügeanomalie, Löschanomalie, Änderungsanomalie \
   <object> ::= 'TABLE' | 'COLUMN' | 'VIEW' | 'SEQUENCE' | 'DATABASE' | 'FUNCTION' | 'SCHEMA'
   ```
 }
-Falls `WITH GRANT OPTION`: Der Berechtigte kann den Zugriff anderen Usern verteilen. $->$ `REVOKE ... CASCADE;`
+With `WITH GRANT OPTION`: The grantee can grant access to other users. $->$ `REVOKE ... CASCADE;`
 ```sql
 CREATE ROLE u WITH LOGIN PASSWORD ''; -- user
 GRANT INSERT ON TABLE t TO u WITH GRANT OPTION;
@@ -471,7 +481,7 @@ CREATE POLICY teachers_see_own_exams ON exams
 ALTER TABLE exams ENABLE ROW LEVEL SECURITY;
 ```
 = Data Definition Language (DDL) \
-#corr("Wichtig: NOT NULL wo notwendig nicht vergessen") \
+#corr("Important: Do not forget NOT NULL where required") \
 ```sql
 CREATE SCHEMA s;
 CREATE TABLE t (
@@ -487,8 +497,8 @@ CREATE TABLE t (
 ALTER TABLE t2 ADD CONSTRAINT c PRIMARY KEY (a, b);
 TRUNCATE/DROP TABLE t;
 ```
-== Vererbung \
-/ Tabelle pro Sub- und Superklasse: \
+== Inheritance \
+/ One table per subclass and superclass: \
 ```sql
 CREATE TABLE sup ( -- 3.a
   id SERIAL PRIMARY KEY,
@@ -506,8 +516,8 @@ ALTER TABLE sub1 ADD CONSTRAINT id FOREIGN KEY
 ALTER TABLE sub2 ADD CONSTRAINT id FOREIGN KEY
   REFERENCES sup (id);
 ```
-#colbreak()
-/ Tabelle pro Subklasse: Enthält jeweil. Subklassattribute \
+// #colbreak()
+/ One table per subclass: Contains the respective subclass attributes \
 ```sql
 CREATE TABLE sub1 ( -- 3.b
   id SERIAL PRIMARY KEY,
@@ -519,7 +529,7 @@ CREATE TABLE sub2 (
   name TEXT UNIQUE
 );
 ```
-/ Einzige Tabelle für Superklasse: Enthält alle Attribute \
+/ Single table for the superclass: Contains all attributes \
 ```sql
 CREATE TABLE sup ( -- 3.c
   id SERIAL PRIMARY KEY,
@@ -527,7 +537,7 @@ CREATE TABLE sup ( -- 3.c
   age INT
 );
 ```
-== Junction Tabellen \
+== Junction tables \
 ```sql
 CREATE TABLE a_b(
   a INTEGER REFERENCES a(id),
@@ -536,7 +546,7 @@ CREATE TABLE a_b(
 );
 ```
 == Views \
-Resultate werden jedes mal dynamisch queried \
+Results are queried dynamically each time \
 ```sql
 CREATE VIEW v (id, u) AS SELECT id, u FROM t;
 -- complex query
@@ -558,17 +568,17 @@ HAVING MIN(g.preis) >= 3
 ORDER BY cheap_gericht;
 ```
 === Updatable View \
-Views sind updatable wenn diese Kriterien erfüllt sind: \
-- Eine einzige "base tabelle"
-- Keine aggregate, DISTINCT, GROUP BY, oder HAVING
-- Alle Spalten müssen zur originalen Tabelle direkt gemappt werden können
+Views are updatable when these criteria are met: \
+- A single "base table"
+- No aggregates, DISTINCT, GROUP BY, or HAVING
+- All columns must map directly to the original table
 === Materialized View \
-Speichert resultat auf Disk \
+Stores the result on disk \
 ```sql
 CREATE MATERIALIZED VIEW mv AS SELECT * FROM t;
 REFRESH MATERIALIZED VIEW mv; -- refresh results
 ```
-== Temporäre Tabellen \
+== Temporary tables \
 ```sql
 CREATE TEMPORARY TABLE temp_products (
   id SERIAL PRIMARY KEY,
@@ -582,73 +592,91 @@ SELECT ts.product_name, ts.quantity FROM
   temp_sales ts JOIN temp_products tp ON
   ts.product_name = tp.product_name;
 ```
-== Datentypen \
+== Data types \
 ```sql
 CREATE TYPE grade AS ENUM('A','B','C','D','E','F');
 NUMERIC(4, 2) /* 99.99 */ NUMERIC(2, 1) /* 9.9 */
 VARCHAR(5) /* 'abcde' */  CHAR(5) /* 'abcde' */
 ```
-== Dreiwertige Logik (cursed)\
+== Three-valued logic (cursed)\
 ```sql
 SELECT NULL IS NULL; -- true
 SELECT NULL = NULL;  -- [unknown]
 ```
-#colbreak()
-#deftbl(
-  term: [Typ],
-  definition: [Beschreibung],
+// #colbreak()
+#deftblge(
+  [INTEGER/INT],
   [INTEGER/INT],
   [Integer (4 bytes)],
   [BIGINT],
+  [BIGINT],
   [Large integer (8 bytes)],
+  [SMALLINT],
   [SMALLINT],
   [Small integer (2 bytes)],
   [REAL],
+  [REAL],
   [Single precision float (4 bytes)],
   [NUMERIC(precision,\ scale)],
+  [NUMERIC(precision,\ scale)],
   [Exact numeric of selectable precision\ Alias for ```sql DECIMAL(precision, scale)```],
-
+  [DOUBLE PRECISION],
   [DOUBLE PRECISION],
   [Double precision float (8 bytes)],
   [SERIAL],
+  [SERIAL],
   [Auto-incrementing integer (4 bytes)],
+  [BIGSERIAL],
   [BIGSERIAL],
   [Auto-incrementing large integer (8 bytes)],
   [SMALLSERIAL],
+  [SMALLSERIAL],
   [Auto-incrementing small integer (2 bytes)],
+  [CHARACTER/\ CHAR(size)],
   [CHARACTER/\ CHAR(size)],
   [Fixed-length, blank-padded string],
   [VARCHAR(size)],
+  [VARCHAR(size)],
   [Variable-length, non-blank-padded string],
+  [TEXT],
   [TEXT],
   [Variable-length character string],
   [BOOLEAN],
+  [BOOLEAN],
   [Logical Boolean (true/false)],
+  [DATE],
   [DATE],
   [Calendar date (year, month, day)],
   [TIME],
+  [TIME],
   [Time of day (no time zone)],
+  [TIMESTAMP],
   [TIMESTAMP],
   [Date and time (no time zone)],
   [TIMESTAMP WITH\ TIME ZONE],
+  [TIMESTAMP WITH\ TIME ZONE],
   [Date and time with time zone],
+  [INTERVAL],
   [INTERVAL],
   [Time interval],
   [JSON],
+  [JSON],
   [JSON data],
   [UUID],
+  [UUID],
   [Universally unique identifier],
+  [ARRAY OF base_type],
   [ARRAY OF base_type],
   [Array of values],
 )
 === Casting \
-*Explizit*
+*Explicit*
 ```sql
 CAST(5 AS float8) = 5::float8
 SELECT 'ABCDEFG'::NUMERIC; -- error
 SELECT SAFE_CAST('ABCDEFG' AS NUMERIC); -- NULL
 ```
-*Implizit*
+*Implicit*
 ```sql
 SELECT 5 + 3.2; -- 5 is cast to 5.0 (numeric)
 SELECT 'Number ' || 42; -- 42 is cast to '42'
@@ -716,13 +744,13 @@ SELECT '100'::text + 1; -- '100' is cast to 100
       ts[4],
       ts[LOGIN],
     )],
-  [*INFO:* FK _uid_ in den Query-Resultaten unten aus Platzgründen ausgelassen],
+  [*INFO:* FK _uid_ omitted from the query results below to save space],
 )
-#colbreak()
+// #colbreak()
 #grid(
   columns: (auto, auto),
   [=== Inner Join \
-    Zeilen, die in beiden Tabellen matchen
+    Rows that match in both tables
     ```sql
     SELECT u.*, a.* FROM u INNER JOIN a ON u.id = a.uid;
     ```
@@ -744,7 +772,7 @@ SELECT '100'::text + 1; -- '100' is cast to 100
 #grid(
   columns: (auto, auto),
   [=== Equi Join \
-    Wie Inner Join
+    Like Inner Join
     ```sql
     SELECT u.*, a.* FROM u JOIN a ON u.id = a.uid;
     ```
@@ -766,7 +794,7 @@ SELECT '100'::text + 1; -- '100' is cast to 100
 #grid(
   columns: (auto, auto),
   [=== Natural Join \
-    Wie Inner Join aber ohne Duplikate
+    Like Inner Join, but without duplicates
     ```sql
     SELECT u.*, a.* FROM u NATURAL JOIN a ON u.id=a.uid;
     ```
@@ -788,7 +816,7 @@ SELECT '100'::text + 1; -- '100' is cast to 100
 #grid(
   columns: (auto, auto),
   [=== Semi Join \
-    Nur Zeilen aus a, wobei b matchen muss
+    Only rows from a for which b must match
     ```sql
     SELECT * FROM u WHERE EXISTS
     (SELECT 1 FROM a WHERE u.id = a.uid);
@@ -807,7 +835,7 @@ SELECT '100'::text + 1; -- '100' is cast to 100
 #grid(
   columns: (auto, auto),
   [=== Anti Join \
-    Nur Zeilen aus a, wobei b nicht matchen darf
+    Only rows from a for which b must not match
     ```sql
     SELECT * FROM u WHERE NOT EXISTS
       (SELECT 1 FROM a WHERE u.id = a.uid);
@@ -826,7 +854,7 @@ SELECT '100'::text + 1; -- '100' is cast to 100
 #grid(
   columns: (auto, auto),
   [=== Left outer Join \
-    Alle Zeilen beider Tabellen, NULL für b falls kein match
+    All rows from both tables; NULL for b if there is no match
     ```sql
     SELECT u.*, a.* FROM u LEFT JOIN a ON u.id = a.uid;
     ```
@@ -853,7 +881,7 @@ SELECT '100'::text + 1; -- '100' is cast to 100
 #grid(
   columns: (auto, auto),
   [=== Right outer Join \
-    Alle Zeilen beider Tabellen, NULL für a falls kein match
+    All rows from both tables; NULL for a if there is no match
     ```sql
     SELECT u.*, a.* FROM u RIGHT JOIN a ON u.id = a.uid;
     ```
@@ -885,7 +913,7 @@ SELECT '100'::text + 1; -- '100' is cast to 100
 #grid(
   columns: (auto, auto),
   [=== Full outer Join \
-    Alle Zeilen beider Tabellen, NULL falls kein match
+    All rows from both tables; NULL if there is no match
     ```sql
     SELECT u.*, a.* FROM u FULL OUTER JOIN a ON u.id = a.uid;
     ```
@@ -922,7 +950,7 @@ SELECT '100'::text + 1; -- '100' is cast to 100
 #grid(
   columns: (auto, auto),
   [=== Cross Join \
-    Liefert alle möglichen Kombinationen zweier Tabellen.
+    Returns all possible combinations of two tables.
     ```sql
     SELECT * FROM u CROSS JOIN a;
     ```
@@ -969,8 +997,8 @@ SELECT '100'::text + 1; -- '100' is cast to 100
 #grid(
   columns: (auto, auto),
   [=== Union \
-    "Verbindet" zwei SELECT's ohne Duplikate. \
-    Voraussetzung: Spalten müssen ähnliche Datentypen beinhalten. *Union all* ist wie Union, nur mit duplikaten $=>$ Rekursive CTEs
+    "Combines" two SELECTs without duplicates. \
+    Prerequisite: Columns must contain similar data types. *Union all* is like Union, but with duplicates $=>$ Recursive CTEs
   ],
   sqltbl(
     columns: (auto, auto),
@@ -997,7 +1025,7 @@ SELECT name FROM u UNION SELECT action FROM a;
   columns: (auto, auto),
   [
     === Lateral Join \
-    Erlaubt Subqueries mit Referenzen zu den anderen Tabellen
+    Allows subqueries referencing the other tables
   ],
   sqltbl(
     columns: (auto, auto, auto),
@@ -1023,7 +1051,7 @@ INSERT INTO t (added, grade)
 ```sql
 UPDATE t SET grade = grade+1, name='' WHERE id = 1;
 ```
-#colbreak()
+// #colbreak()
 == Subqueries
 ```sql
 SELECT * FROM t WHERE grade > ANY
@@ -1042,18 +1070,18 @@ SELECT id, COUNT(*) FROM t
 BETWEEN 1 AND 5; LIKE '___%'; AND; IS (NOT) NULL
 IN (1, 5)      ; LIKE '%asd'; OR ;
 ```
-== Aggregatfunktionen
+== Aggregate functions
 ```sql
 COUNT   ; SUM   ; MIN   ; MAX   ; AVG
 ```
-== Weitere Funktionen
+== Other functions
 ```sql
 COALESCE(a1, a2, ...); -- returns first non-null arg
 ```
 == Common Table Expressions (CTE) \
-- Erlauben die zeilenweise Ausgabe
-- Erlauben Abfragen quasi als Parameter
-- Können rekursiv sein
+- Allow row-by-row output
+- Allow queries to act as parameters
+- Can be recursive
 ```sql
 -- normal
 WITH cte AS (SELECT * FROM t) SELECT * FROM cte;
@@ -1075,50 +1103,50 @@ SELECT id, u, LAG(name, 1) OVER
 -- PERCENT/DENSE_RANK(), FIRST_VALUE(v), LAST_VALUE(n)
 -- NTH_VALUE(v,n), NTILE(n), LEAD(v,o), ROW_NUMBER()
 ```
-= Relationale Algebra \
-$pi_(R 1,R 4) (R)$ ```sql SELECT R1,R4 FROM R;``` #h(1fr) (Projektion)\
-$sigma_(R 1 > 30) (R)$ ```sql SELECT * FROM R WHERE R1 > 30;``` #h(1fr) (Selektion)\
-$rho_("a" <- "R")$ ```sql SELECT * FROM R AS a;``` #h(1fr) (Umbenennung/Alias)\
-$R times S$ ```sql SELECT * FROM R,S;``` #h(1fr) (Kartesisches Produkt)\
-$R attach(limits(join), b: A=B) S$ ```sql SELECT * FROM R JOIN S ON R.A=S.B;``` #h(1fr) (Verbund)\
+= Relational algebra \
+$pi_(R 1,R 4) (R)$ ```sql SELECT R1,R4 FROM R;``` #h(1fr) (Projection)\
+$sigma_(R 1 > 30) (R)$ ```sql SELECT * FROM R WHERE R1 > 30;``` #h(1fr) (Selection)\
+$rho_("a" <- "R")$ ```sql SELECT * FROM R AS a;``` #h(1fr) (Renaming/Alias)\
+$R times S$ ```sql SELECT * FROM R,S;``` #h(1fr) (Cartesian product)\
+$R attach(limits(join), b: A=B) S$ ```sql SELECT * FROM R JOIN S ON R.A=S.B;``` #h(1fr) (Join)\
 = INDEX
 #table(
   columns: (auto, 1fr, 1fr, 1fr, 1fr),
   [], [B-Tree], [Hash], [BRIN], [ISAM],
-  [Gleichheitsabfragen], cg, cg, cr, cg,
+  [Equality queries], cg, cg, cr, cg,
   [Range Queries], cg, cr, cg, cr,
-  [Sortierte Daten], cg, cr, cg, cg,
-  [Grosse Tabellen], cb, table.cell(fill: colors-l.blue, [bei =]), cg, cg,
-  [Häufige abfragen], cg, cb, cg, cr,
-  [Direkter zugriff über PK], cg, cg, cr, cb,
-  [Überlaufseiten], cg, cg, cr, cg,
+  [Sorted data], cg, cr, cg, cg,
+  [Large tables], cb, table.cell(fill: colors-l.blue, [for =]), cg, cg,
+  [Frequent queries], cg, cb, cg, cr,
+  [Direct access via PK], cg, cg, cr, cb,
+  [Overflow pages], cg, cg, cr, cg,
 )
 ```sql
 CREATE INDEX i ON t/*USING BTREE*/ (grade,UPPER(u));
 CREATE INDEX j ON t (fk) INCLUDE (added) WHERE fk>4;
 DROP INDEX i;
 ```
-= Transaktionen \
-Note: In postgres gibt es keine geschachtelten T. \
-/ Atomicity: Vollständig oder gar nicht \
-/ Consistency: Konsistenter Zustand bleibt erhalten \
-/ Isolation: Transaktion ist von anderen T isoliert \
-/ Durability: Änderungen sind persistent \
+= Transactions \
+Note: PostgreSQL has no nested transactions. \
+/ Atomicity: All or nothing \
+/ Consistency: A consistent state is preserved \
+/ Isolation: A transaction is isolated from other transactions \
+/ Durability: Changes are persistent \
 ```sql
 BEGIN;  SAVEPOINT s;
 COMMIT; ROLLBACK /*TO SAVEPOINT s*/;
 ```
-#colbreak()
+// #colbreak()
 = Isolation
 ```sql
 SET TRANSACTION ISOLATION LEVEL ...; -- transaction
 SET SESSION CHARACTERISTICS AS TRANSACTION
   ISOLATION LEVEL ...; --  session
 ```
-/ READ UNCOMMITTED: Lesezugriffe nicht synchronisiert (keine Read-lock), Read ignoriert jegliche Sperren \
-/ READ COMMITTED: Lesezugriffe nur kurz/temporär synchronisiert (default), setzt für gesamte T Write-Lock, Read-lock nur kurzfristig \
-/ REPEATABLE READ: Einzelne Zugriffe ROWS sind synchronisiert, Read und Write Lock für die gesamte T \
-/ SERIALIZABLE: Vollständige Isolation nach ACID \
+/ READ UNCOMMITTED: Reads are not synchronized (no read lock); reads ignore all locks \
+/ READ COMMITTED: Reads are synchronized briefly/temporarily (default); write locks last for the whole transaction, read locks only briefly \
+/ REPEATABLE READ: Individual row accesses are synchronized; read and write locks last for the whole transaction \
+/ SERIALIZABLE: Full isolation according to ACID \
 #table(
   columns: (1fr, 1fr, 1fr, 1fr, 1fr),
   [], [Read Uncommitted], [Read Committed], [Repeatable Read], [Serializable],
@@ -1129,26 +1157,26 @@ SET SESSION CHARACTERISTICS AS TRANSACTION
   [Phantom Read], cg, cg, cg, cr,
   [Read Skew], cg, cg, cr, cr,
   [Write Skew], cg, cg, cg, cb,
-  [Dauerhaftigkeit], cg, cg, cr, cr,
-  [Atomizität], cr, cr, cg, cg,
+  [Durability], cg, cg, cr, cr,
+  [Atomicity], cr, cr, cg, cg,
 )
-\* Nur in SQL92 möglich, PSQL >= 9.1 verhindert dies \
-/ Dirty Read: Lese Daten von nicht committed T's \
-/ Fuzzy Read: Versch. Werte beim mehrmaligen Lesen gleicher Daten (da durch andere T geändert) \
-/ Phantom Read: Neue/Gelöschte Rows einer anderen T \
-/ Read Skew: Daten lesen, die sich während der T ändern \
-/ Write Skew: Mehrere T lesen Daten und Ändern sie \
-/ Deadlock: Mehrere T blockieren sich, da sie auf die gleiche Ressource warten \
-/ Cascading Rollback: T schlägt fehl und alle davon abhängigen T müssen ebenfalls zurückgerollt werden \
+\* Only possible in SQL92; PSQL >= 9.1 prevents this \
+/ Dirty Read: Reading data from uncommitted transactions \
+/ Fuzzy Read: Different values when reading the same data repeatedly (modified by another transaction) \
+/ Phantom Read: Rows inserted/deleted by another transaction \
+/ Read Skew: Reading data that changes during the transaction \
+/ Write Skew: Multiple transactions read data and modify it \
+/ Deadlock: Multiple transactions block each other while waiting for the same resource \
+/ Cascading Rollback: A transaction fails and all dependent transactions must also be rolled back \
 #table(
   columns: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
   [],
-  [Serialisierbar],
+  [Serializable],
   [Deadlocks],
   [Cascading RollB.],
-  [Konflikt-RollB.],
-  [Hohe Parallelität],
-  [Realistisch],
+  [Conflict rollback],
+  [High concurrency],
+  [Realistic],
 
   [Two-Phase Locking], cg, cg, cg, cr, cr, cr,
   [Strict 2PL], cg, cg, cr, cr, cr, cg,
@@ -1158,8 +1186,8 @@ SET SESSION CHARACTERISTICS AS TRANSACTION
   [Snapshot Isolation], cr, cb, cr, cg, cg, cg,
   [SSI], cg, cb, cr, cg, cg, cg,
 )
-\* Deadlock in PSQL mit Snapshot Isolation \
-*SQL Beispiel* \
+\* Deadlock in PSQL with Snapshot Isolation \
+*SQL example* \
 ```sql
 BEGIN;
 SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
@@ -1173,20 +1201,20 @@ UPDATE accounts SET balance = balance + 100.00
     WHERE name = 'Wally';
 COMMIT;
 ```
-#colbreak()
+// #colbreak()
 == Two-Phase Locking (2PL) \
-Stellt Isolation der T sicher \
-+ Growing Phase: Die T kann neue Locks erwerben, jedoch keine freigeben
-+ Shrinking Phase: Locks können freigegeben werden, aber keine neuen mehr erworben werden
-/ Strict 2PL: T geben locks erst nach commit frei \
-/ Preclaiming 2PL: Alle Locks werden zu Beginn der T erstellt\
-*#[_S_]hared* _Lock_: Lesezugriffe (mehrere Transaktionen) \
-*E#[_X_]clusive* _Lock_: Schreib- & Lesezugriffe (eine Transaktion) \
-/ Starvation: T erhält aufgrund von Sperren niemals die Möglichkeit, ihre Arbeit abzuschliessen, da T immer blockiert wird \
-=== Optimistisches Lockverfahren \
-T operieren ohne anfängliche Sperren. Überprüfen am Ende falls Konflikte aufgetreten $->$ Änderungen zurücksetzen. \
-=== Pessimistisches Lockverfahren (Preclaiming 2PL)\
-T fordern sofort Sperren an, damit andere T nicht gleichzeitig auf dieselben Daten zugreifen oder diese ändern. \
+Ensures transaction isolation \
++ Growing Phase: The transaction can acquire new locks but cannot release any
++ Shrinking Phase: Locks can be released, but no new locks can be acquired
+/ Strict 2PL: Transactions release locks only after commit \
+/ Preclaiming 2PL: All locks are acquired at the start of the transaction\
+*#[_S_]hared* _Lock_: Read access (multiple transactions) \
+*E#[_X_]clusive* _Lock_: Write & read access (one transaction) \
+/ Starvation: A transaction never gets the chance to finish its work because locks keep blocking it \
+=== Optimistic locking \
+Transactions operate without initial locks. Check for conflicts at the end $->$ roll back changes. \
+=== Pessimistic locking (Preclaiming 2PL)\
+Transactions request locks immediately so that other transactions cannot access or modify the same data simultaneously. \
 #box(fill: colors-l.green, inset: 2pt)[*Growing phase*] #h(1fr) #box(
   fill: colors-l.blue,
   inset: 2pt,
@@ -1250,7 +1278,7 @@ T fordern sofort Sperren an, damit andere T nicht gleichzeitig auf dieselben Dat
       (2, 6),
       <T1S2>,
       "->",
-      [Wartet auf],
+      [Waits for],
       label-angle: left,
       shift: (2pt, 0pt),
     ),
@@ -1323,7 +1351,7 @@ T fordern sofort Sperren an, damit andere T nicht gleichzeitig auf dieselben Dat
       (2, 7),
       <T2S1>,
       "->",
-      tr[Wartet auf],
+      tr[Waits for],
       label-angle: right,
       shift: (4pt, 0pt),
       stroke: colors.red,
@@ -1335,16 +1363,16 @@ T fordern sofort Sperren an, damit andere T nicht gleichzeitig auf dieselben Dat
       (1, 9),
       <T1S2>,
       "->",
-      tr[Wartet auf],
+      tr[Waits for],
       label-pos: 65%,
       shift: (4pt, 0pt),
       stroke: colors.red,
     ),
   )
 ]
-== Serialisierbarkeit \
-/ Serieller Schedule: Führt Transaktionen am Stück aus
-/ Nicht serialisierbar: #let node = node.with(
+== Serializability \
+/ Serial schedule: Executes transactions without interleaving
+/ Not serializable: #let node = node.with(
     width: 8pt,
     height: 8pt,
     inset: 3pt,
@@ -1363,15 +1391,15 @@ T fordern sofort Sperren an, damit andere T nicht gleichzeitig auf dieselben Dat
       edge(<t2>, <t1>, shift: (5pt, 5pt), "-|>"),
     ),
   )
-/ Konfliktpaare: #grid(
+/ Conflicting pairs: #grid(
     columns: (1fr, 1fr),
     [#td([R1])\(x) < #tr([W2])\(x)], [#tr([R2])\(x) < #td([W1])\(x)],
   )
-*Konflikt-Serialisierbar:* \
+*Conflict-serializable:* \
 #td([r1(b)])#tr([r2(b)w2(b)r2(c)r2(d)])#tg([w3(a)])#tp([r4(d)])#tg([r3(b)])#tp(
   [w4(d)],
 )#tb([r5(c)r5(a)])#tp([w4(c)]) \
-*Konflikt-Äquivalenter serieller Schedule:* \
+*Conflict-equivalent serial schedule:* \
 #td([r1(b)])#tr([r2(b)w2(b)r2(c)r2(d)])#tg([w3(a)r3(b)])#tb([r5(c)r5(a)])#tp(
   [r4(d)w4(d)w4(c)],
 ) \
@@ -1389,29 +1417,32 @@ T fordern sofort Sperren an, damit andere T nicht gleichzeitig auf dieselben Dat
   edge(<t3>, <t5>, "-|>"),
   edge(<t5>, <t4>, "-|>"),
 ))
-#deftbl(
+#deftblge(
   [Seriell],
-  [Alle T in einem Schedule sind geordnet],
+  [Serial],
+  [All transactions in a schedule are ordered],
   [Konfliktäquivalent],
-  [Reihenfolge aller Paare von konfligierenden Aktionen ist in beiden Schedules gleich],
+  [Conflict-equivalent],
+  [The order of all pairs of conflicting actions is the same in both schedules],
   [Konfliktserialisierbar],
-  [Ein S ist konfliktäquivalent zu einem seriellen S],
+  [Conflict-serializable],
+  [A schedule is conflict-equivalent to a serial schedule],
 )
-== Vollständiges Backup \
-Exakte kopie der ganzen DB \
-== Inkrementelles Backup \
-Sichert nur die seit dem letzten Backup geänderten Daten. \
-== Logisches Backup (SQL Dump) \
-Blockiert keine T. Für mittelgrosse Datenmengen, interkompatibel mit neuen PG-Versionen und anderen Maschinen. \
-== Physisches Backup (File System) \
-Datenbank muss gestoppt werden, schneller als logisches Backup, passt nur zu derselben "Major Version" von PG. \
-#colbreak()
+== Full backup \
+Exact copy of the entire DB \
+== Incremental backup \
+Backs up only data changed since the last backup. \
+== Logical backup (SQL Dump) \
+Does not block transactions. For medium-sized datasets; compatible with new PG versions and other machines. \
+== Physical backup (File System) \
+The database must be stopped; faster than a logical backup; works only with the same PG "major version". \
+// #colbreak()
 == Multi-Version Concurrency Control (MVCC) \
-Ermöglich es, mehreren T gleichzeitig zu laufen. Bei jeder Änderung wird eine neue Version der Daten erstellt. Leser sehen die älteren Versionen, während Schreiber die neuesten Versionen sehen. \
+Allows multiple transactions to run concurrently. Each change creates a new version of the data. Readers see older versions, while writers see the latest versions. \
 == Write-Ahead Log (WAL) \
-Schreibt Änderungen der T in Log, dann Commit loggen, dann Updates in DB. Kann bei Absturz replayed werden \
+Writes transaction changes to the log, then logs the commit, then updates the DB. Can be replayed after a crash \
 *LSN, TaID, PageID, Redo, Undo, PrevLSN* \
-= SQL Beispiele
+= SQL examples
 ```sql
 CREATE TABLE pferd (
   pnr SERIAL PRIMARY KEY,
@@ -1459,7 +1490,7 @@ WITH RECURSIVE tens AS (
 ) SELECT n FROM tens limit 10;
 -- 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 ```
-= B-Baum \
+= B-tree \
 #grid(
   columns: (1fr, 1fr),
   [

@@ -8,11 +8,12 @@
   add-answer-note,
   add-hd-note,
   deftbl,
+  deftblge,
   defbox,
   exbox,
 ) = tanki-utils(gen-id(info.module))
 
-#let pgdoc = l => link(l, "Postgres Dokumentation")
+#let pgdoc = l => link(l, "Postgres Documentation")
 #let nbox = c => box(
   inset: 1em,
   stroke: 1pt,
@@ -25,95 +26,130 @@
   ],
 )
 
-= Glossar
+= Glossary
 
-#deftbl(
+#deftblge(
   [Entität],
-  [Ein eindeutig identifizierbares Objekt oder Konzept, z. B. eine Person oder ein Produkt.],
+  [Entity],
+  [A uniquely identifiable object or concept, e.g. a person or a product.],
   [Entitätsmenge],
-  [Eine Gruppe von ähnlichen Entitäten, die durch gemeinsame Eigenschaften gekennzeichnet sind.],
+  [Entity set],
+  [A group of similar entities characterized by shared properties.],
   [Kardinalität von Beziehungen],
-  [Gibt an, wie viele Entitäten an einer Beziehung beteiligt sind (z. B. 1:1, 1:n, n:m).],
+  [Relationship cardinality],
+  [Indicates how many entities participate in a relationship (e.g. 1:1, 1:n, n:m).],
   [Kardinalität von Attributen],
-  [Bezieht sich auf die Anzahl der Werte, die ein Attribut annehmen kann.],
+  [Attribute cardinality],
+  [Refers to the number of values an attribute can take.],
   [Basisdatentyp],
-  [Die grundlegenden Datentypen in einer Datenbank, wie Integer, String oder Boolean.],
+  [Base data type],
+  [The basic data types in a database, such as Integer, String, or Boolean.],
   [Mehrwertiges Attribut],
-  [Ein Attribut, das mehrere Werte für ein einzelnes Entitätsobjekt speichern kann, z. B. Telefonnummern.],
+  [Multivalued attribute],
+  [An attribute that can store multiple values for a single entity object, e.g. phone numbers.],
   [Schwache Entity Menge],
-  [Eine Menge von Entitäten, die ohne eine zugehörige starke Entität nicht existieren kann.],
+  [Weak entity set],
+  [A set of entities that cannot exist without an associated strong entity.],
   [Spezialisierung],
-  [Der Prozess, bei dem von einer allgemeinen Entität eine spezifischere Entität abgeleitet wird.],
+  [Specialization],
+  [The process of deriving a more specific entity from a general entity.],
   [Surrogate Key],
-  [Ein künstlicher Schlüssel, der verwendet wird, um eine Entität zu identifizieren, ohne natürliche Eigenschaften zu verwenden.],
+  [Surrogate Key],
+  [An artificial key used to identify an entity without using natural properties.],
   [Zusammengesetztes Attribut],
-  [Ein Attribut, das aus mehreren Unterattributen besteht, z. B. eine Adresse (Straße, Stadt, PLZ).],
+  [Composite attribute],
+  [An attribute consisting of several subattributes, e.g. an address (street, city, postal code).],
   [Zweitschlüssel],
-  [Ein Attribut oder eine Kombination von Attributen, die nicht primär, aber eindeutig identifizieren können.],
+  [Secondary key],
+  [An attribute or combination of attributes that can uniquely identify an entity without being the primary key.],
   [Datenbank],
-  [Eine organisierte Sammlung von Daten, die in einem DBMS verwaltet wird.],
+  [Database],
+  [An organized collection of data managed in a DBMS.],
   [System-Katalog],
-  [Ein internes Repository, das Metadaten über die Datenbankobjekte enthält, z. B. Tabellen und Schemata.],
+  [System catalog],
+  [An internal repository containing metadata about database objects, e.g. tables and schemas.],
   [Datenbankschema],
-  [Die logische Struktur einer Datenbank, die die Organisation der Daten und deren Beziehungen beschreibt.],
+  [Database schema],
+  [The logical structure of a database describing the organization of data and its relationships.],
   [Datenbasis],
-  [Der physische Speicherort, an dem die Daten der Datenbank tatsächlich gespeichert sind.],
+  [Data store],
+  [The physical storage location where the database's data is actually stored.],
   [Datenunabhängigkeit],
-  [Die Fähigkeit, Daten in einer Datenbank zu ändern, ohne dass Änderungen an den Anwendungen erforderlich sind.],
+  [Data independence],
+  [The ability to change data in a database without requiring changes to applications.],
   [DBMS (Datenbank- \ managementsystem)],
-  [Software, die die Erstellung, Verwaltung und Nutzung einer Datenbank ermöglicht. /* #corr("TODO: 5 wichtige funktionen, 1-Tier + 2-Tier DBMS") */],
+  [DBMS (Database \ management system)],
+  [Software that enables the creation, management, and use of a database. /* #corr("TODO: 5 wichtige funktionen, 1-Tier + 2-Tier DBMS") */],
   [DBS (Datenbanksystem)],
-  [Ein allgemeiner Begriff für eine Kombination aus DBMS und den dazugehörigen Datenbanken.],
+  [DBS (Database system)],
+  [A general term for a combination of a DBMS and its associated databases.],
   [Implementierungsschema],
-  [Die spezifische Struktur und Organisation der Daten auf physischer Ebene innerhalb eines DBMS.],
+  [Implementation schema],
+  [The specific structure and organization of data at the physical level within a DBMS.],
   [Impedance-Mismatch],
-  [Ein Problem, das auftritt, wenn zwei Systeme unterschiedliche Datenmodelle verwenden, wodurch die Interaktion erschwert wird.],
+  [Impedance-Mismatch],
+  [A problem that occurs when two systems use different data models, making interaction more difficult.],
   [Konsistenz],
-  [Der Zustand, in dem die Datenbankregeln eingehalten werden, und die Daten integrativ und fehlerfrei sind.],
+  [Consistency],
+  [The state in which database rules are upheld and the data has integrity and is free of errors.],
   [ODBMS (Objektorientiertes \ Datenbankmanagementsystem)],
-  [Ein DBMS, das objektorientierte Programmierkonzepte für die Datenverwaltung nutzt.],
+  [ODBMS (Object-oriented \ database management system)],
+  [A DBMS that uses object-oriented programming concepts for data management.],
   [ORDBMS (Objekt-relationales \ Datenbankmanagementsystem)],
-  [Eine Kombination aus objektorientierten und relationalen Prinzipien in der Datenbankverwaltung.],
+  [ORDBMS (Object-relational \ database management system)],
+  [A combination of object-oriented and relational principles in database management.],
   [Persistenz],
-  [Die Fähigkeit von Daten, über die Laufzeit eines Programms hinaus zu bestehen.],
+  [Persistence],
+  [The ability of data to exist beyond a program's runtime.],
   [RDBMS (Relationales  \ Datenbankmanagementsystem)],
-  [Ein DBMS, das Daten in tabellarischer Form speichert und relationalen Zugriff ermöglicht.],
+  [RDBMS (Relational  \ database management system)],
+  [A DBMS that stores data in tabular form and provides relational access.],
 )
 
 = UML
 
-#deftbl(
-  [Assoziation #image("./img/uml_arrow_association.jpg")],
-  [Eine Beziehung zwischen zwei oder mehr Klassen, die zeigt, wie Objekte dieser Klassen miteinander verbunden sind.],
+#deftblge(
+  [Assoziation],
+  [Association #image("./img/uml_arrow_association.jpg")],
+  [A relationship between two or more classes showing how objects of these classes are connected.],
+  [Aggregation],
   [Aggregation #image("./img/uml_arrow_aggregation.jpg")],
-  [Eine spezielle Form der Assoziation, die eine "Teil-von" Beziehung darstellt, bei der die Lebensdauer des Teils unabhängig von dem Ganzen ist.],
-  [Komposition #image("./img/uml_arrow_composition.jpg")],
-  [Eine stärkere Form der Aggregation, bei der die Lebensdauer des Teils von der des Ganzen abhängt; wenn das Ganze gelöscht wird, wird auch das Teil gelöscht.],
-  [Vererbung #image("./img/uml_arrow_inheritance.jpg")],
-  [Ein Mechanismus, durch den eine Klasse Eigenschaften und Verhalten (Methoden) von einer anderen Klasse erben kann, was die Wiederverwendbarkeit fördert.],
+  [A special form of association representing a "part-of" relationship in which the lifetime of the part is independent of the whole.],
+  [Komposition],
+  [Composition #image("./img/uml_arrow_composition.jpg")],
+  [A stronger form of aggregation in which the lifetime of the part depends on the whole; deleting the whole also deletes the part.],
+  [Vererbung],
+  [Inheritance #image("./img/uml_arrow_inheritance.jpg")],
+  [A mechanism through which a class can inherit properties and behavior (methods) from another class, promoting reusability.],
   [Multiplizität \ 1 | 0..1 | 1..\*],
-  [Gibt an, wie viele Objekte einer Klasse mit einem Objekt einer anderen Klasse in Beziehung stehen können (z. B. 1:1, 1:n, n:m).],
+  [Multiplicity \ 1 | 0..1 | 1..\*],
+  [Indicates how many objects of one class can be related to an object of another class (e.g. 1:1, 1:n, n:m).],
   [Notiz],
-  [Eine Anmerkung oder ein Kommentar innerhalb eines UML-Diagramms, die zusätzliche Informationen oder Erklärungen zu Elementen oder Beziehungen bereitstellt.],
+  [Note],
+  [An annotation or comment within a UML diagram providing additional information or explanations about elements or relationships.],
 )
 
-== Vererbung zusätzliche Notizen
+== Additional inheritance notes
 
-#deftbl(
+#deftblge(
   [Disjoint],
-  [Objekt ist Instanz von genau einer Unterklasse.],
+  [Disjoint],
+  [An object is an instance of exactly one subclass.],
+  [Overlapping],
   [Overlapping],
   [
-    Objekt kann Instanz von mehreren überlappenden Unterklassen sein;
-    Objekt kann im Laufe seines Lebens die Unterklassen-Zugehörigkeit wechseln.
+    An object can be an instance of multiple overlapping subclasses;
+    an object can change its subclass membership during its lifetime.
   ],
   [Complete],
-  [Alle Subklassen sind definiert],
+  [Complete],
+  [All subclasses are defined],
   [Incomplete],
-  [Zusätzliche Subklassen sind erlaubt],
+  [Incomplete],
+  [Additional subclasses are allowed],
 )
 
-== Krähenfussnotation
+== Crow's foot notation
 \
 #let nw2 = (width: 10em, height: 1em)
 #let nw3 = (width: 1pt, height: 1em)
@@ -122,44 +158,49 @@
   node-stroke: none,
   mark-scale: 100%,
   spacing: (3em, 1em),
-  node(..nw2, (1, 1), nt2("Eins"), name: <fst>),
+  node(..nw2, (1, 1), nt2("One"), name: <fst>),
   node(..nw3, (2, 1), "", name: <fst2>),
   edge(<fst>, <fst2>, "1-"),
 
-  node(..nw2, (3, 1), nt2[Eins (zwingend)], name: <trd>),
+  node(..nw2, (3, 1), nt2[One (mandatory)], name: <trd>),
   node(..nw3, (4, 1), "", name: <trd2>),
   edge(<trd>, <trd2>, "1!-"),
 
-  node(..nw2, (5, 1), nt2[Null oder eins], name: <fth>),
+  node(..nw2, (5, 1), nt2[Zero or one], name: <fth>),
   node(..nw3, (6, 1), "", name: <fth2>),
   edge(<fth>, <fth2>, "1?-"),
 
-  node(..nw2, (1, 2), nt2("Mehrere"), name: <snd>),
+  node(..nw2, (1, 2), nt2("Many"), name: <snd>),
   node(..nw3, (2, 2), "", name: <snd2>),
   edge(<snd>, <snd2>, "n-"),
 
-  node(..nw2, (3, 2), nt2[Mehrere (mind. 1)], name: <frt>),
+  node(..nw2, (3, 2), nt2[Many (at least 1)], name: <frt>),
   node(..nw3, (4, 2), "", name: <frt2>),
   edge(<frt>, <frt2>, "n!-"),
 
-  node(..nw2, (5, 2), nt2[Null oder mehrere], name: <sxt>),
+  node(..nw2, (5, 2), nt2[Zero or many], name: <sxt>),
   node(..nw3, (6, 2), "", name: <sxt2>),
   edge(<sxt>, <sxt2>, "n?-"),
 )
 
-= Datenbankmodelle
+= Database models
 
-#deftbl(
+#deftblge(
   [Hierarchisch],
-  [Ein Datenbankmodell, das Daten in einer baumartigen Struktur anordnet, bei der jede Entität einen Elternknoten hat und mehrere Kindknoten haben kann.],
+  [Hierarchical],
+  [A database model that arranges data in a tree-like structure in which each entity has one parent node and can have several child nodes.],
   [Netzwerk],
-  [Ein Datenbankmodell, das eine flexiblere Struktur als das hierarchische Modell bietet, indem es mehrere Pfade zwischen Entitäten erlaubt.],
+  [Network],
+  [A database model offering a more flexible structure than the hierarchical model by allowing multiple paths between entities.],
   [Objektorientiert],
-  [Ein Datenbankmodell, das objektorientierte Programmierprinzipien anwendet, um Daten und deren Verhalten in Form von Objekten zu speichern und zu verwalten.],
+  [Object-oriented],
+  [A database model that applies object-oriented programming principles to store and manage data and its behavior as objects.],
   [Objektrelational],
-  [Kombiniert objektorientierte und relationale Prinzipien, um komplexe Datenstrukturen zu unterstützen und erweitert die relationale Modellierung um Objekte.],
+  [Object-relational],
+  [Combines object-oriented and relational principles to support complex data structures and extends relational modeling with objects.],
   [Relational],
-  [Ein weit verbreitetes Datenbankmodell, das Daten in Tabellen (Relationen) speichert und die Beziehungen zwischen diesen Tabellen durch Schlüssel verwaltet.],
+  [Relational],
+  [A widely used database model that stores data in tables (relations) and manages relationships between these tables using keys.],
 )
 
 #let app = (..b) => node(shape: pill, inset: 7pt, ..b)
@@ -168,10 +209,10 @@
   [
     1-Tier \
     #diagram(
-      node((0, 0.3), "Gerät", stroke: none),
-      app((0, 1), "Applikation"),
+      node((0, 0.3), "Device", stroke: none),
+      app((0, 1), "Application"),
       edge("<->"),
-      app((0, 3), [Lokale\ Datenbank]),
+      app((0, 3), [Local\ database]),
       node(enclose: ((0, 0), (0, 3))),
     )
   ],
@@ -179,12 +220,12 @@
     2-Tier \
     #diagram(
       node((0, 0.3), "Client", stroke: none),
-      app((0, 1), "Applikation"),
+      app((0, 1), "Application"),
       edge("<-"),
-      node((0, 2), "Netzwerk", stroke: none),
+      node((0, 2), "Network", stroke: none),
       edge("->"),
       node((0, 3), "Server", stroke: none),
-      app((0, 3.7), "Datenbank"),
+      app((0, 3.7), "Database"),
       node(enclose: ((0, 0), (0, 1))),
       node(enclose: ((0, 3), (0, 3.7))),
     )
@@ -193,13 +234,13 @@
     3-Tier \
     #diagram(
       node((0, 0.3), "Client", stroke: none),
-      app((0, 1), "Applikation"),
+      app((0, 1), "Application"),
       edge("<-"),
-      node((0, 2), "Netzwerk", stroke: none),
+      node((0, 2), "Network", stroke: none),
       edge("->"),
       node((0, 3), "Server", stroke: none),
-      app((0, 3.7), "Applikationsserver", name: <srv>),
-      app((0, 5), "Datenbank", name: <db>),
+      app((0, 3.7), "Application server", name: <srv>),
+      app((0, 5), "Database", name: <db>),
       edge(<srv>, <db>, "<->"),
       node(enclose: ((0, 0), (0, 1))),
       node(enclose: ((0, 3), <srv>, <db>)),
@@ -207,22 +248,26 @@
   ],
 )
 
-= ANSI-Modell
+= ANSI model
 
-#deftbl(
+#deftblge(
   [Logische Ebene],
-  [Logische Struktur der Daten, Definition durch logisches Schema «Trägermodell» (Zugriff auf die Daten durch DBMS von Speichermedium)],
+  [Logical level],
+  [Logical structure of the data, defined by the logical schema «underlying model» (DBMS access to data on the storage medium)],
   [Interne Ebene],
-  [Speicherstrukturen, Definition durch internes Schema (Beziehungen zwischen den Daten, Tabellen etc.)],
+  [Internal level],
+  [Storage structures, defined by the internal schema (relationships between data, tables, etc.)],
   [Externe Ebene],
-  [Sicht einer Benutzerklasse auf Teilmenge der DB, Definition durch externes Schema (Daten, auf die der Benutzer zugreifen kann)],
+  [External level],
+  [A user class's view of a subset of the DB, defined by an external schema (data the user can access)],
   [Mapping],
-  [Zwischen den Ebenen ist eine mehr oder weniger komplexe Abbildung notwendig],
+  [Mapping],
+  [A more or less complex mapping is required between the levels],
 )
 
 // #corr([TODO: Folien zusammenfassungen am schluss])
 
-= Datenbank-Entwurfsprozess
+= Database design process
 
 #{
   let edge = edge.with(label-side: right)
@@ -232,35 +277,35 @@
     spacing: (5em, 3em),
     node(
       (0, 0),
-      text(fill: colors.purple)[Informations-\ anforderungen],
+      text(fill: colors.purple)[Information\ requirements],
       name: <info>,
       shape: pill,
       stroke: colors.purple,
     ),
     node(
       (2, 0),
-      text(fill: colors.red)[Datenverarbeitungs-\ anforderungen],
+      text(fill: colors.red)[Data processing\ requirements],
       name: <daten>,
       shape: pill,
       stroke: colors.red,
     ),
     node(
       (2, 2),
-      text(fill: colors.blue)[DBMS-\ Charakteristika],
+      text(fill: colors.blue)[DBMS\ characteristics],
       name: <dbms>,
       shape: pill,
       stroke: colors.blue,
     ),
     node(
       (2, 3),
-      text(fill: gr)[Hardware/BS-\ Charakteristika],
+      text(fill: gr)[Hardware/OS\ characteristics],
       name: <hw>,
       shape: pill,
       stroke: gr,
     ),
     node(
       (1, 0),
-      [Anforderungs-\ analyse],
+      [Requirements\ analysis],
       name: <anal>,
       fill: colors-l.darkblue,
       stroke: colors.darkblue,
@@ -268,10 +313,10 @@
     edge("->", text(
       style: "italic",
       fill: colors.comment,
-    )[Anforderungs-\ spezifikation]),
+    )[Requirements\ specification]),
     node(
       (1, 1),
-      [Konzeptioneller\ DB-Entwurf],
+      [Conceptual\ DB design],
       name: <konz>,
       fill: colors-l.darkblue,
       stroke: colors.darkblue,
@@ -279,10 +324,10 @@
     edge("->", text(
       style: "italic",
       fill: colors.comment,
-    )[Konzeptionelles\ Datenmodell]),
+    )[Conceptual\ data model]),
     node(
       (1, 2),
-      [Logischer\ DB-Entwurf],
+      [Logical\ DB design],
       name: <log>,
       fill: colors-l.darkblue,
       stroke: colors.darkblue,
@@ -290,10 +335,10 @@
     edge("->", text(
       style: "italic",
       fill: colors.comment,
-    )[Logisches\ Datenmodell]),
+    )[Logical\ data model]),
     node(
       (1, 3),
-      [Physischer\ Entwurf],
+      [Physical\ design],
       name: <phys>,
       fill: colors-l.darkblue,
       stroke: colors.darkblue,
@@ -301,7 +346,7 @@
     edge("->", text(
       style: "italic",
       fill: colors.comment,
-    )[\ Physisches\ Datenmodell\ (Schema)]),
+    )[\ Physical\ data model\ (Schema)]),
     node(
       (1, 4),
       [\ ],
@@ -311,19 +356,19 @@
     ),
     node(
       (0, 1),
-      text(fill: yl)[(1) UML-\ Klassendiagramm],
+      text(fill: yl)[(1) UML\ class diagram],
       name: <uml>,
       stroke: none,
     ),
     node(
       (0, 2),
-      text(fill: yl)[(2) Relationale\ Schreibweise],
+      text(fill: yl)[(2) Relational\ notation],
       name: <rel>,
       stroke: none,
     ),
     node(
       (0, 3),
-      text(fill: yl)[(3) DB-Schema\ (PG SQL)],
+      text(fill: yl)[(3) DB schema\ (PG SQL)],
       name: <sql>,
       stroke: none,
     ),
@@ -342,38 +387,38 @@
   ))
 }
 
-== Konzeptionelles Modell
+== Conceptual model
 
-In dieser Phase wird eine abstrakte Sicht auf die Datenbank erstellt, die die Anforderungen der Benutzer erfasst. Es werden Entitäten, Attribute und deren Beziehungen definiert, ohne sich um technische Details zu kümmern.
+In this phase, an abstract view of the database is created to capture user requirements. Entities, attributes, and their relationships are defined without considering technical details.
 
-== Logisches Modell
+== Logical model
 
-Hier wird das konzeptionelle Modell in eine spezifische Datenbankstruktur übersetzt, ohne sich um physische Aspekte zu kümmern. Es wird festgelegt, wie Daten organisiert sind (z. B. in Tabellen) und welche Regeln für Integrität bestehen.
+Here, the conceptual model is translated into a specific database structure without considering physical aspects. This defines how data is organized (e.g. in tables) and which integrity rules apply.
 
-== Physisches Modell
+== Physical model
 
-In dieser Phase werden die spezifischen Implementierungsdetails festgelegt, einschließlich der Speicherstruktur und der Indexierung. Das Modell wird optimiert, um Leistung, Effizienz und Datenzugriff zu verbessern.
+In this phase, specific implementation details are defined, including the storage structure and indexing. The model is optimized to improve performance, efficiency, and data access.
 
-= Normalformen
+= Normal forms
 
 #nbox([
-  Tabelle nicht in normalisierter Form \
+  Table not in normalized form \
   #nbox([
-    *1. Normalform* \
-    Attributwerte sind atomar \
+    *1st normal form* \
+    Attribute values are atomic \
     #nbox([
-      *2. Normalform* \
-      Nichtschlüsselattribute voll vom Schlüssel abhängig \
+      *2nd normal form* \
+      Non-key attributes are fully dependent on the key \
       #nbox([
-        *3. Normalform* \
-        Keine transitiven Abhängigkeiten \
+        *3rd normal form* \
+        No transitive dependencies \
         #nbox([
-          *Boyce-Codd-Normalform* \
-          Nur Abhängigkeiten vom Schlüssel \
+          *Boyce-Codd normal form* \
+          Only dependencies on the key \
           #nbox([
-            (4. Normalform) \
+            (4th normal form) \
             #nbox([
-              (5. Normalform) \
+              (5th normal form) \
             ])
           ])
         ])
@@ -382,96 +427,101 @@ In dieser Phase werden die spezifischen Implementierungsdetails festgelegt, eins
   ])
 ])
 
-#deftbl(
+#deftblge(
   [Funktionale \ Abhängigkeit],
-  [Eine Beziehung zwischen zwei Attributen, bei der ein Attribut (B) von einem anderen Attribut (A) abhängt; zu jedem Wert von A existiert genau ein Wert von B, dargestellt als $A -> B$.],
+  [Functional \ dependency],
+  [A relationship between two attributes in which one attribute (B) depends on another attribute (A); for each value of A, there is exactly one value of B, expressed as $A -> B$.],
   [Atomar],
-  [Ein Attribut ist atomar, wenn es nicht weiter in Unterattribute zerlegt werden kann; es enthält also nur einen einzelnen Wert.],
+  [Atomic],
+  [An attribute is atomic if it cannot be further divided into subattributes; it therefore contains only a single value.],
   [Voll funktional \ abhängig],
-  [Ein Attribut (B) ist voll funktional abhängig von einem anderen Attribut (A), wenn es von A abhängt und sich nicht durch andere Attribute ableiten lässt.],
+  [Fully functionally \ dependent],
+  [An attribute (B) is fully functionally dependent on another attribute (A) if it depends on A and cannot be derived from other attributes.],
   [Teilweise funktional \ abhängig],
-  [Ein Attribut (B) ist teilweise funktional abhängig von einem anderen Attribut (A), wenn B von A abhängt, aber auch von einem Teil eines zusammengesetzten Schlüssels.],
+  [Partially functionally \ dependent],
+  [An attribute (B) is partially functionally dependent on another attribute (A) if B depends on A, but also on part of a composite key.],
   [Transitiv abhängig],
-  [Ein Attribut (C) ist transitiv abhängig von einem anderen Attribut (A), wenn A auf B und B auf C verweist, wodurch eine indirekte Abhängigkeit zwischen A und C entsteht.],
+  [Transitively dependent],
+  [An attribute (C) is transitively dependent on another attribute (A) if A refers to B and B refers to C, creating an indirect dependency between A and C.],
 )
 
 == NF1
 
-- Attributwerte sind atomar
+- Attribute values are atomic
 
 == NF2
 
-- Nichtschlüsselatribute voll vom Schlüssel abhängig
-- Besteht der PK nur aus einem einzigen Attribut (ist er also nicht
-  zusammengesetzt), so bereits automatisch die 2. NF gegeben.
-- Eine Tabelle ist NICHT in 2. NF, wenn sie einen zusammengesetzten Schlüssel hat
-  und mind. ein Nichtschlüsselattribut von nur einem Teil des Schlüssels
-  funktional abhängig ist.
+- Non-key attributes are fully dependent on the key
+- If the PK consists of only a single attribute (i.e. it is not
+  composite), 2nd NF is already satisfied automatically.
+- A table is NOT in 2nd NF if it has a composite key
+  and at least one non-key attribute is functionally dependent on only part
+  of the key.
 
 == NF3
 
-- Keine transitiven Abhängigkeiten
+- No transitive dependencies
 
 == BCNF
 
-- Keine Abhängigkeiten vom Schlüssel
+- No dependencies on the key
 
-= Relationale Algebra
+= Relational algebra
 
 #link("https://users.informatik.uni-halle.de/~brass/db23/slides/dd_relal.pdf")
 
 #table(
   columns: (auto, auto, 1fr, auto, 1fr),
-  table-header([Begriff], [], [Bedeutung], [Beispiel], [SQL]),
-  [Projektion],
+  table-header([Term], [], [Meaning], [Example], [SQL]),
+  [Projection],
   [$pi$],
-  [Extrahieren ausgewählter Spalten einer Relation],
+  [Extracting selected columns from a relation],
   [$pi_(R 1,R 4) (R)$],
 
   [```sql SELECT R1,R4 FROM R;```],
 
-  [Selektion],
+  [Selection],
   [$sigma$],
-  [Filtern der Datensätze. $sigma$ steht für $=, >, <, !=, <=, >=$],
+  [Filtering records. $sigma$ stands for $=, >, <, !=, <=, >=$],
   [$sigma_(R 1 > 30) (R)$],
   [```sql SELECT * FROM R WHERE R1 > 30;```],
 
-  [Umbenennung],
+  [Renaming],
   [$rho$],
-  [Umbenennung der Attribute],
+  [Renaming attributes],
   [$rho_("a" <- "R")$],
   [```sql SELECT * FROM R AS a;```],
 
-  [Kartesisches \ Produkt],
+  [Cartesian \ product],
   [$times$],
-  [ Kombinieren jeder Zeile einer Relation mit jeder Zeile einer anderen Relation ```sql CROSS JOIN```],
+  [ Combining each row of a relation with each row of another relation ```sql CROSS JOIN```],
   [$(R times S)$],
   [```sql SELECT * FROM R,S;```],
 
-  [Verbund/Join],
+  [Join],
   [$join$],
-  [Voraussetung: Attribute r[a] und r[b] sind vereinigungsverträglich (typkompatibel)],
+  [Prerequisite: attributes r[a] and r[b] are union-compatible (type-compatible)],
   [$R join S$],
   [ ],
 
   [Theta-join],
   [$join_theta$],
-  [$theta$ steht für $=, >, <, !=, <=, >=$],
+  [$theta$ stands for $=, >, <, !=, <=, >=$],
   [$R [a theta b] S$],
   [```sql SELECT R.* FROM R JOIN S ON R.A :theta S.B;```],
 
   [Equi-join],
   [$join_=$],
-  [$theta$ ist $=$],
+  [$theta$ is $=$],
   [$R attach(limits(join), b: A=B) S \ = rho_(A=B) (R times S)$],
   [```sql SELECT * FROM R JOIN S ON R.A = S.B;```],
 
   [Natural join],
   [$join$],
   [
-    Equi join ohne doppelte spalten
+    Equi join without duplicate columns
 
-    ```sql ON R.A = S.A``` kann ausgelassen werden, implizit werden gleich heissende columns verglichen
+    ```sql ON R.A = S.A``` can be omitted; columns with the same name are compared implicitly
   ],
   [ ],
   [
@@ -480,11 +530,11 @@ In dieser Phase werden die spezifischen Implementierungsdetails festgelegt, eins
 
   [Outer join],
   [$join.l join.r \ join.l.r$],
-  [Verbindet Tupel auch ohne Übereinstimmung],
+  [Joins tuples even without a match],
   [],
   [ ],
 
-  [Semi-join], [$times.l times.r$], ["left outer join ohne join"], [], [ ],
+  [Semi-join], [$times.l times.r$], ["left outer join without join"], [], [ ],
 )
 
 = (Postgre)SQL
@@ -497,28 +547,32 @@ In dieser Phase werden die spezifischen Implementierungsdetails festgelegt, eins
 //   Glossar: Aggregatfunktionen; CASE; EXISTS; FALSE; GROUPING; GROUPING-SETS; Gruppenfunktionen; HAVING-Klausel; IN-Operator; IS-NULL-Operator; Join-Tabelle; Join-Typ-SQL; Konkatenation ('||'); Korrelierte-Unterabfrage; LENGTH; LOB; MOD; Non-Equi-Join; NULL; RegulaererAusdruck; SFW-Block; Skalare-Unterabfrage; TO-CHAR; TO-DATE; TO-NUMBER; TRUE; Typkonvertierungsfunktion; Vereinigungskonform; Wildcard;
 // ])
 
-== Glossar
+== Glossary
 
-#deftbl(
+#deftblge(
   [Operatorbaum],
-  [Eine hierarchische Struktur, die die Beziehung zwischen Operatoren und Operanden in einer Abfrage darstellt; wird in der Analyse von SQL-Ausdrücken verwendet.],
+  [Operator tree],
+  [A hierarchical structure representing the relationship between operators and operands in a query; used in the analysis of SQL expressions.],
   [Semantische Integrität],
-  [Die Gewährleistung, dass die Daten innerhalb der Datenbank nicht nur syntaktisch korrekt, sondern auch inhaltlich sinnvoll sind, wodurch die Gültigkeit der Daten sichergestellt wird.],
+  [Semantic integrity],
+  [Ensuring that data within the database is not only syntactically correct but also meaningful in content, thereby ensuring data validity.],
   [Relation],
-  [In PostgreSQL bezeichnet eine Relation eine Tabelle, die aus Zeilen und Spalten besteht, wobei jede Zeile einem Datensatz und jede Spalte einem Attribut entspricht.],
+  [Relation],
+  [In PostgreSQL, a relation denotes a table consisting of rows and columns, where each row corresponds to a record and each column to an attribute.],
   [Surrogate Key],
-  [Ein künstlich generierter Schlüssel, der zur eindeutigen Identifizierung von Datensätzen in einer Tabelle verwendet wird und keine natürliche Bedeutung hat; oft als Sequenz implementiert.],
+  [Surrogate Key],
+  [An artificially generated key used to uniquely identify records in a table and having no natural meaning; often implemented as a sequence.],
 )
 
 == DDL (Data Definition Language)
 
 #pgdoc("https://www.postgresql.org/docs/current/ddl.html")
 
-Definiert Befehle für das Kreieren, Löschen und Modifizieren von Tabellendefinitionen, von externen Sichten (Views), von Constraints und von einigen anderen Datenbankobjekten (Index, Cluster) für die Optimierung der Abbildung von der logischen auf die interne Ebene.
+Defines commands for creating, deleting, and modifying table definitions, external views, constraints, and certain other database objects (index, cluster) to optimize the mapping from the logical to the internal level.
 
-=== Wichtigste Befehle
+=== Main commands
 
-Zusätzlich kann ```sql IF (NOT) EXISTS``` hinzugefügt werden oder der ```sql CREATE``` mit ```sql CREATE OR REPLACE``` ausgetauscht werden. Beim ```sql DROP``` Befehl kann ```sql CASCADE``` hinzugefügt werden.
+Additionally, ```sql IF (NOT) EXISTS``` can be added, or ```sql CREATE``` can be replaced with ```sql CREATE OR REPLACE```. For the ```sql DROP``` command, ```sql CASCADE``` can be added.
 
 ```sql
 CREATE SCHEMA s;    DROP SCHEMA s;
@@ -529,7 +583,7 @@ CREATE INDEX i;     DROP INDEX i;
 CREATE DATABASE db; DROP DATABASE db;
 ```
 
-=== Beispiel CREATE TABLE <create_table>
+=== CREATE TABLE example <create_table>
 
 ```sql
 CREATE TABLE schema_name.table_name (
@@ -547,65 +601,86 @@ CREATE TABLE schema_name.table_name (
 )
 ```
 
-=== Datentypen
+=== Data types
 
 #pgdoc("https://www.postgresql.org/docs/current/datatype.html") \
-Sinnvolle Konversionen und Rundungen werden implizit durchgeführt.
+Appropriate conversions and rounding are performed implicitly.
 
-#deftbl(
+#deftblge(
+  [INTEGER/INT],
   [INTEGER/INT],
   [Integer (4 bytes)],
   [BIGINT],
+  [BIGINT],
   [Large integer (8 bytes)],
+  [SMALLINT],
   [SMALLINT],
   [Small integer (2 bytes)],
   [REAL],
+  [REAL],
   [Single precision floating-point number (4 bytes)],
+  [NUMERIC(precision,scale)],
   [NUMERIC(precision,scale)],
   [Exact numeric of selectable precision],
   [DOUBLE PRECISION],
+  [DOUBLE PRECISION],
   [Double precision floating-point number (8 bytes)],
+  [SERIAL],
   [SERIAL],
   [Auto-incrementing integer (4 bytes)],
   [BIGSERIAL],
+  [BIGSERIAL],
   [Auto-incrementing large integer (8 bytes)],
+  [SMALLSERIAL],
   [SMALLSERIAL],
   [Auto-incrementing small integer (2 bytes)],
   [CHARACTER/CHAR(size)],
+  [CHARACTER/CHAR(size)],
   [Fixed-length, blank-padded string],
+  [VARCHAR(size)],
   [VARCHAR(size)],
   [Variable-length, non-blank-padded string],
   [TEXT],
+  [TEXT],
   [Variable-length character string],
+  [BOOLEAN],
   [BOOLEAN],
   [Logical Boolean (true/false)],
   [DATE],
+  [DATE],
   [Calendar date (year, month, day)],
+  [TIME],
   [TIME],
   [Time of day (no time zone)],
   [TIMESTAMP],
+  [TIMESTAMP],
   [Date and time (no time zone)],
+  [TIMESTAMP WITH TIME ZONE],
   [TIMESTAMP WITH TIME ZONE],
   [Date and time with time zone],
   [INTERVAL],
+  [INTERVAL],
   [Time interval],
+  [JSON],
   [JSON],
   [JSON data],
   [UUID],
+  [UUID],
   [Universally unique identifier],
+  [ARRAY OF base_type],
   [ARRAY OF base_type],
   [Array of values],
 )
 
 ==== Type casting
 
-Explizit
+Explicit
 ```sql
 CAST(5 AS float8) = 5::float8
 SELECT 'ABCDEFG'::NUMERIC;                   -- error
 SELECT SAFE_CAST('ABCDEFG' AS NUMERIC);      -- NULL
 ```
-Implizit
+Implicit
 ```sql
 SELECT 5 + 3.2;                              -- cast to 5.0 (numeric)
 SELECT 'Number ' || 42;                      -- cast to '42'
@@ -618,26 +693,32 @@ SELECT '100'::text + 1;                      -- cast to 100
 
 #pgdoc("https://www.postgresql.org/docs/current/ddl-constraints.html")
 
-#deftbl(
+#deftblge(
   [PRIMARY KEY],
-  [Attribut ist Primärschlüssel und damit "UNIQUE" und "NOT NULL" ],
+  [PRIMARY KEY],
+  [The attribute is a primary key and therefore "UNIQUE" and "NOT NULL" ],
   [NOT NULL],
-  [Attributwerte müssen immer einen definierter Wert haben (default ist NULL) ],
+  [NOT NULL],
+  [Attribute values must always have a defined value (the default is NULL) ],
   [UNIQUE],
-  [Attributwerte aller Tupels der Tabelle müssen eindeutig sein. UNIQUE in Kombination mit NOT NULL definiert einen Sekundärschlüssel. UNIQUE in Kombination mit NULL bedeutet, dass alle Attributwerte ungleich NULL eindeutig sein müssen.  ],
+  [UNIQUE],
+  [Attribute values of all tuples in the table must be unique. UNIQUE combined with NOT NULL defines a secondary key. UNIQUE combined with NULL means that all non-NULL attribute values must be unique.  ],
   [CHECK],
-  [erlaubt die Definition von weiteren Einschränkungen (siehe Beispiele) ],
+  [CHECK],
+  [Allows additional constraints to be defined (see examples) ],
   [DEFAULT],
-  [setzt einen Defaultwert, dieser gilt wenn beim Einfügen eines Tupels mit INSERT kein Attributwert angegeben wird. ],
+  [DEFAULT],
+  [Sets a default value, which applies if no attribute value is specified when inserting a tuple with INSERT. ],
   [REFERENCES],
-  [Attribut ist Fremdschlüssel ],
+  [REFERENCES],
+  [The attribute is a foreign key ],
 )
 
 === ALTER TABLE
 
 #pgdoc("https://www.postgresql.org/docs/current/ddl-alter.html")
 
-Sollte bei foreign Keys bevorzugt werden, da somit rekursive Referenzen einfacher umgesetzt werden können.
+Should be preferred for foreign keys, as recursive references can be implemented more easily this way.
 
 ```sql
 ALTER TABLE table_name
@@ -649,16 +730,16 @@ ALTER TABLE other_table
   FOREIGN KEY (that) REFERENCES table_name (counter);
 ```
 
-=== Referentielle Integrität
+=== Referential integrity
 
-Der Fremdschlüssel in einer abhängigen Tabelle muss als Wert entweder einen aktuellen Wert des Schlüssels der referenzierten Tabelle (1:n) oder NULL (1c:n) aufweisen. Diese referentielle Integritätsbedingung kann bei Einfüge-, Lösch- und Änderungsoperationen verletzt werden und sollte daher vom DBMS überprüft werden.
+The foreign key in a dependent table must contain either a current key value from the referenced table (1:n) or NULL (1c:n). This referential integrity constraint can be violated by insert, delete, and update operations and should therefore be checked by the DBMS.
 
 Trigger:
 ```sql
 ON UPDATE
 ON DELETE
 ```
-Aktion:
+Action:
 ```sql
 CASCADE
 RESTRICT
@@ -666,59 +747,73 @@ SET DEFAULT
 SET NULL
 ```
 
-Siehe @create_table.
+See @create_table.
 
 === Index
 
-#link("https://md.infs.ch/s/WvhPX6dPn", "Blogpost Stefan Keller")
+#link("https://md.infs.ch/s/WvhPX6dPn", "Stefan Keller's blog post")
 
 #link("https://use-the-index-luke.com/", "Use the index, luke")
 
-Ein Index ist eine Hilfsdatenstruktur, die zu einem gegebenen Attributwert die Adressen der Tupel mit diesem Attributwert liefert.
+An index is an auxiliary data structure that provides the addresses of tuples with a given attribute value.
 
-#deftbl(
+#deftblge(
   [B-Baum],
-  [Ein selbstbalancierender Baum, der für schnelle Datenzugriffe in Datenbanken verwendet wird; er ermöglicht effizientes Einfügen, Löschen und Suchen von Datensätzen.],
+  [B-tree],
+  [A self-balancing tree used for fast data access in databases; it enables efficient insertion, deletion, and searching of records.],
   [B+-Baum],
-  [Es befinden sich alle Daten nur in den Blattknoten. Schneller als B-Baum.],
+  [B+-tree],
+  [All data is located only in the leaf nodes. Faster than a B-tree.],
   [Bitmap-Index],
-  [Ein Index-Typ, der eine Bitmap für jeden Wert eines Attributs verwendet, um große Datenmengen effizient abzufragen und besonders für Spalten mit wenigen eindeutigen Werten geeignet ist.],
+  [Bitmap index],
+  [An index type that uses a bitmap for each value of an attribute to query large amounts of data efficiently and is particularly suitable for columns with few unique values.],
   [Cluster],
-  [Eine Methode, die Daten in einer Tabelle physisch zusammenzuhalten basierend auf einem bestimmten Index, wodurch der Zugriff auf mehrere zusammengehörende Datensätze verbessert wird.],
+  [Cluster],
+  [A method of physically keeping data in a table together based on a specific index, improving access to multiple related records.],
   [Füllgrad],
-  [Der Prozentsatz des Speicherplatzes eines Indexes, der tatsächlich mit Daten gefüllt ist; beeinflusst die Effizienz bei der Index-Suche und Datenspeicherung.],
+  [Fill factor],
+  [The percentage of an index's storage space actually filled with data; affects the efficiency of index searches and data storage.],
   [Hash],
-  [Ein Index, der eine Hash-Funktion verwendet, um den Zugriff auf Datensätze zu beschleunigen; besonders nützlich für Gleichheitsabfragen bei sehr großen Datenmengen.],
+  [Hash],
+  [An index that uses a hash function to speed up access to records; particularly useful for equality queries on very large amounts of data.],
   [Heap],
-  [Die Standard-Speicherstruktur in einer relationalen Datenbank, bei der Datensätze in beliebiger Reihenfolge gespeichert werden, ohne einen spezifischen Index.],
+  [Heap],
+  [The default storage structure in a relational database, in which records are stored in arbitrary order without a specific index.],
   [Indizes],
-  [Strukturen, die die Suche nach Datensätzen in einer Datenbank beschleunigen, indem sie eine schnelle Zugriffsart auf Daten bereitstellen, ohne alle Datensätze scannen zu müssen.],
+  [Indexes],
+  [Structures that speed up searches for records in a database by providing a fast way to access data without scanning all records.],
   [ISAM],
-  [Indexed Sequential Access Method; ein älteres Indexierungssystem, das eine Kombination aus sequenzieller und indizierter Speicherung verwendet, um den Datenzugriff zu optimieren.],
+  [ISAM],
+  [Indexed Sequential Access Method; an older indexing system that combines sequential and indexed storage to optimize data access.],
   [Physische \ Speicherstruktur],
-  [Die Art und Weise, wie Daten in der Datenbank physisch auf dem Speicher abgelegt sind, einschließlich der Verwendung von Indizes für eine schnellere Datenabfrage.],
+  [Physical \ storage structure],
+  [The way data is physically stored in the database, including the use of indexes for faster data retrieval.],
   [Überlaufseite],
-  [Eine spezielle Seite, die verwendet wird, um zusätzliche Daten zu speichern, wenn die ursprüngliche Indexseite voll ist; wird häufig bei B-Bäumen verwendet.],
+  [Overflow page],
+  [A special page used to store additional data when the original index page is full; frequently used in B-trees.],
   [Zusammengesetzter \ Index],
-  [Ein Index, der auf zwei oder mehr Attributen basiert, um schnellere Suchoperationen für Kombinationen dieser Attribute zu ermöglichen, anstatt nur auf ein einzelnes Attribut zuzugreifen.],
+  [Composite \ index],
+  [An index based on two or more attributes to enable faster searches for combinations of these attributes rather than accessing only a single attribute.],
   [Partieller Index],
-  [Ein Index, der nur auf einen Teil der Tabelle angewendet wird, basierend auf einer definierten Bedingung; ermöglicht effiziente Abfragen für häufig verwendete Teilmengen der Daten.],
+  [Partial index],
+  [An index applied only to part of a table based on a defined condition; enables efficient queries on frequently used subsets of the data.],
   [Funktionaler Index],
-  [Basiert auf den Ergebnissen einer Funktion, die auf den Werten einer oder mehrerer Spalten angewendet wird.],
+  [Functional index],
+  [Based on the results of a function applied to the values of one or more columns.],
 )
 
 // #corr("TODO: DB Optimierung")
-Zwei Datenstrukturen:
+Two data structures:
 - Data Pages (Heaps)
-- Suchbaum
+- Search tree
 
-Zugriff Baum:
-- Durchwandern des Baumes
-- Verfolgen der Blattknoten-Kette
-- Tabellenzugriff (falls nötig)
+Tree access:
+- Traversing the tree
+- Following the leaf-node chain
+- Table access (if necessary)
 
-- Primär-Index vs Sekundär-Index
-- Sekundärer Index vs Integrierter (Clustered) Index
+- Primary index vs secondary index
+- Secondary index vs integrated (clustered) index
 
 ```sql
 CREATE INDEX mytable_col_idx ON mytable (col);
@@ -743,7 +838,7 @@ CREATE INDEX mytable_col_idx ON mytable (UPPER(col));
 
 #pgdoc("https://www.postgresql.org/docs/current/ddl-schemas.html")
 
-Ein Schema ist ein Menge von DB-Objekten, welche zu einer logischen Datenbank gehören. Ein Schema kann folgende Objekte beinhalten: Tabellen, Sichten, Zusicherungen (Assertions), Berechtigungen etc.
+A schema is a set of DB objects belonging to a logical database. A schema can contain the following objects: tables, views, assertions, permissions, etc.
 
 // #corr([TODO: Beispiele])
 
@@ -757,7 +852,7 @@ Ein Schema ist ein Menge von DB-Objekten, welche zu einer logischen Datenbank ge
 
 #pgdoc("https://www.postgresql.org/docs/current/dml.html")
 
-=== Ausschnitt des Syntax
+=== Syntax excerpt
 
 #{
   show raw: set text(size: 10pt)
@@ -809,7 +904,7 @@ INSERT INTO combined_table
 
 #pgdoc("https://www.postgresql.org/docs/current/dml-update.html")
 
-Mit dem Update-Befehl können bestehende Tupel in der Datenbank modifiziert werden.
+The UPDATE command can be used to modify existing tuples in the database.
 
 ```sql
 UPDATE table_name
@@ -841,7 +936,7 @@ SELECT important, CONCAT(very_long_name, age) AS personal_info
   LIMIT 77;
 ```
 
-==== Prädikate (WHERE)
+==== Predicates (WHERE)
 
 #pgdoc(
   "https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-WHERE",
@@ -857,7 +952,7 @@ OR
 IS (NOT) NULL
 ```
 
-==== Aggregatfunktionen
+==== Aggregate functions
 
 #pgdoc("https://www.postgresql.org/docs/current/functions-aggregate.html")
 
@@ -869,16 +964,16 @@ SUM()
 COUNT()
 ```
 
-==== Gruppierung (GROUP BY and HAVING)
+==== Grouping (GROUP BY and HAVING)
 
 #pgdoc(
   "https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-GROUP",
 )
 
-_GROUP BY_ teilt die Resultattabelle in Gruppen auf, die in der GROUP BY - Spalte gleiche Werte aufweisen. NULL-Werte einer GROUP-BY Spalte werden als separate Gruppe behandelt.
+_GROUP BY_ divides the result table into groups with identical values in the GROUP BY column. NULL values in a GROUP BY column are treated as a separate group.
 
-Die _HAVING_ Klausel kann nur nach einer GROUP-BY Klausel stehen. Sie erlaubt die Auswahl von Zeilen, die durch die Anwendung der GROUP BY Bedingung entstehen (analog der WHERE-Klausel). Die Bedingung der HAVING-Klausel muss mit einer Funktion beginnen, welche in der
-SELECT-Klausel vorkommen muss.
+The _HAVING_ clause can only follow a GROUP BY clause. It allows the selection of rows resulting from applying the GROUP BY condition (analogous to the WHERE clause). The condition in the HAVING clause must begin with a function that must appear in the
+SELECT clause.
 
 ```sql
 SELECT very_long_name, age, COUNT(*)
@@ -889,13 +984,13 @@ SELECT very_long_name, age, COUNT(*)
 
 ==== Join
 
-#pgdoc("https://www.postgresql.org/docs/current/tutorial-join.html"), #link("https://www.atlassian.com/data/sql/sql-join-types-explained-visually", "Visuelle Beispiele Atlassian"), #link("https://www.codecademy.com/resources/docs/sql/commands/left-join", "Visuelle Beispiele CodeCademy")
+#pgdoc("https://www.postgresql.org/docs/current/tutorial-join.html"), #link("https://www.atlassian.com/data/sql/sql-join-types-explained-visually", "Atlassian visual examples"), #link("https://www.codecademy.com/resources/docs/sql/commands/left-join", "CodeCademy visual examples")
 
-Die Join-Operation verbindet Tabellen über Spalten mit dem gleichen Datentyp. Damit können Beziehungen zwischen den Tabellen (realisiert über Fremdschlüssel) aufgelöst werden.
+The join operation connects tables through columns with the same data type. This allows relationships between tables (implemented through foreign keys) to be resolved.
 
 ===== CROSS JOIN
 
-Gibt das kartesische Produkt der beiden Tabellen zurück, d.h. jede Zeile aus der ersten Tabelle wird mit jeder Zeile aus der zweiten Tabelle kombiniert.
+Returns the Cartesian product of the two tables, i.e. each row from the first table is combined with each row from the second table.
 
 ```sql
 SELECT a.*, b.*
@@ -905,7 +1000,7 @@ SELECT a.*, b.*
 
 ===== INNER JOIN
 
-Gibt nur die Zeilen zurück, die in beiden Tabellen übereinstimmen.
+Returns only the rows that match in both tables.
 
 ```sql
 SELECT a.*, b.*
@@ -915,19 +1010,19 @@ SELECT a.*, b.*
 
 ===== LEFT JOIN
 
-Gibt alle Zeilen aus der linken Tabelle zurück und die übereinstimmenden Zeilen aus der rechten Tabelle. Wenn es keine Übereinstimmung gibt, werden NULL-Werte für die rechte Tabelle zurückgegeben.
+Returns all rows from the left table and the matching rows from the right table. If there is no match, NULL values are returned for the right table.
 
 ===== RIGHT JOIN
 
-Wie left join, nur umgekehrt.
+Like left join, but reversed.
 
 ===== FULL OUTER JOIN
 
-Gibt alle Zeilen zurück, die in einer der beiden Tabellen vorhanden sind. Wenn es keine Übereinstimmung gibt, werden NULL-Werte für die Tabelle zurückgegeben, in der keine Übereinstimmung gefunden wurde.
+Returns all rows present in either table. If there is no match, NULL values are returned for the table in which no match was found.
 
 ===== JOIN LATERAL
 
-Ein spezieller Typ von Join, der es ermöglicht, eine Unterabfrage zu verwenden, die auf Zeilen der äußeren Abfrage basiert. Dies ist nützlich für komplexe Abfragen, bei denen die Ergebnisse einer Unterabfrage von den Ergebnissen der äußeren Abfrage abhängen.
+A special type of join that allows a subquery based on rows of the outer query to be used. This is useful for complex queries in which the results of a subquery depend on the results of the outer query.
 
 ```sql
 SELECT a.*, b.*
@@ -935,15 +1030,15 @@ SELECT a.*, b.*
     JOIN LATERAL (SELECT * FROM table_b WHERE table_b.id = a.id) AS b;
 ```
 
-==== Mengenoperationen
+==== Set operations
 
 #pgdoc("https://www.postgresql.org/docs/current/queries-union.html")
 
-Jede dieser Operationen kann mit ```sql ALL``` postfixed werden, um die Duplikate beizubehalten.
+Each of these operations can be followed by ```sql ALL``` to retain duplicates.
 
 ===== UNION
 
-Kombiniert die Ergebnisse zweier oder mehrerer SELECT-Abfragen und gibt alle Zeilen zurück, ausschließlich Duplikate.
+Combines the results of two or more SELECT queries and returns all rows, excluding duplicates.
 
 ```sql
 SELECT r1, r2
@@ -955,19 +1050,19 @@ FROM B;
 
 ===== INTERSECT
 
-Gibt die gemeinsamen Zeilen aus zwei SELECT-Abfragen zurück. Das Ergebnis enthält nur die Zeilen, die in beiden Abfragen vorhanden sind.
+Returns the rows common to two SELECT queries. The result contains only rows present in both queries.
 
 ===== EXCEPT (MINUS)
 
-Gibt die Zeilen aus der ersten SELECT-Abfrage zurück, die nicht in der zweiten SELECT-Abfrage vorhanden sind.
+Returns rows from the first SELECT query that are not present in the second SELECT query.
 
-==== Unterabfragen
+==== Subqueries
 
 #pgdoc("https://www.postgresql.org/docs/current/functions-subquery.html")
 
-Eine Unterabfrage darf nur einen Spaltennamen oder einen Ausdruck und keine ORDER BY - Klausel enthalten.
+A subquery may contain only one column name or one expression and no ORDER BY clause.
 
-Verschachteltes Beispiel:
+Nested example:
 
 ```sql
 SELECT name
@@ -986,7 +1081,7 @@ SELECT name
 
 ===== =
 
-Vergleicht den Wert einer Spalte mit dem Ergebnis einer Unterabfrage. Unterabfrage darf nur einen Wert zurückliefern.
+Compares the value of a column with the result of a subquery. The subquery may return only one value.
 
 ```sql
 SELECT *
@@ -996,7 +1091,7 @@ SELECT *
 
 ===== IN
 
-Überprüft, ob der Wert einer Spalte in der Menge der Ergebnisse einer Unterabfrage enthalten ist.
+Checks whether the value of a column is contained in the set of results of a subquery.
 
 ```sql
 SELECT *
@@ -1006,7 +1101,7 @@ SELECT *
 
 ===== EXISTS
 
-Überprüft, ob eine Unterabfrage mindestens eine Zeile zurückgibt.
+Checks whether a subquery returns at least one row.
 
 ```sql
 SELECT name
@@ -1017,7 +1112,7 @@ SELECT name
 
 ===== ANY
 
-Überprüft, ob der Wert einer Spalte irgendeinen Wert in der Menge der Ergebnisse einer Unterabfrage erfüllt.
+Checks whether the value of a column satisfies the condition for any value in the set of results of a subquery.
 
 ```sql
 SELECT *
@@ -1027,13 +1122,13 @@ SELECT *
 
 ===== ALL
 
-Überprüft, ob der Wert einer Spalte alle Werte in der Menge der Ergebnisse einer Unterabfrage erfüllt.
+Checks whether the value of a column satisfies the condition for all values in the set of results of a subquery.
 
 ==== Window functions
 
 #pgdoc("https://www.postgresql.org/docs/current/tutorial-window.html")
 
-Window Functions sind spezielle SQL-Funktionen, die Berechnungen über eine Menge von Zeilen durchführen, die mit der aktuellen Zeile in Beziehung stehen.
+Window functions are special SQL functions that perform calculations over a set of rows related to the current row.
 
 ```sql
 SELECT
@@ -1055,52 +1150,64 @@ FROM
   angestellter;
 ```
 
-===== Funktionen
+===== Functions
 
 #pgdoc("https://www.postgresql.org/docs/current/functions-window.html")
 
-#deftbl(
+#deftblge(
   [RANK()],
-  [Vergibt Rangpositionen mit Berücksichtigung von Gleichständen. Bei mehreren gleichen Werten erhalten diese den gleichen Rang, und die nächste Position wird übersprungen],
+  [RANK()],
+  [Assigns ranks while accounting for ties. Multiple equal values receive the same rank, and the next position is skipped],
   [DENSE_RANK()],
-  [Wie RANK nur ohne Lücken],
+  [DENSE_RANK()],
+  [Like RANK, but without gaps],
   [PERCENT_RANK()],
-  [Berechnet den prozentualen Rang eines Datensatzes innerhalb eines Fensters],
+  [PERCENT_RANK()],
+  [Calculates the percentage rank of a record within a window],
   [ROW_NUMBER()],
-  [Weist jeder Zeile eine eindeutige fortlaufende Nummer zu. Auch bei gleichen Werten erhält jede Zeile eine unterschiedliche Nummer],
+  [ROW_NUMBER()],
+  [Assigns a unique sequential number to each row. Even for equal values, each row receives a different number],
   [LAG(value, offset)],
-  [Greift auf den Wert einer vorherigen Zeile im Fenster zu],
+  [LAG(value, offset)],
+  [Accesses the value of a preceding row in the window],
   [LEAD(value, offset)],
-  [Greift auf den Wert einer nachfolgenden Zeile im Fenster zu],
+  [LEAD(value, offset)],
+  [Accesses the value of a following row in the window],
   [FIRST_VALUE(value)],
-  [Liefert den ersten Wert in der definierten Fenstermenge. Nützlich für Vergleiche mit dem Anfangswert einer Partition],
+  [FIRST_VALUE(value)],
+  [Returns the first value in the defined window set. Useful for comparisons with the initial value of a partition],
   [LAST_VALUE(value)],
-  [Liefert den letzten Wert in der definierten Fenstermenge],
+  [LAST_VALUE(value)],
+  [Returns the last value in the defined window set],
   [NTH_VALUE(value, n)],
-  [Gibt den Wert des n-ten Datensatzes innerhalb eines Fensteres zurück],
+  [NTH_VALUE(value, n)],
+  [Returns the value of the nth record within a window],
   [NTILE(n)],
-  [Teilt die Datensätze in n gleich grosse Gruppen auf],
+  [NTILE(n)],
+  [Divides the records into n equally sized groups],
 )
 
-===== OVER Klausel
+===== OVER clause
 
-#deftbl(
+#deftblge(
   [ORDER BY],
-  [Sortiert die Zeilen innerhalb des Fensters nach einem oder mehreren Spalten. Bestimmt die Reihenfolge, in der Berechnungen für Window Functions durchgeführt werden],
+  [ORDER BY],
+  [Sorts the rows within the window by one or more columns. Determines the order in which calculations for window functions are performed],
   [PARTITION BY],
-  [Teilt das Resultset in Partitionen, auf die Window Functions separat angewendet werden. Ermöglicht Berechnungen innerhalb definierter Gruppen, ohne die Gesamtergebnismenge zu ändern],
+  [PARTITION BY],
+  [Divides the result set into partitions to which window functions are applied separately. Enables calculations within defined groups without changing the overall result set],
 )
 
 == Views
 
-Eine View ist eine virtuelle Tabelle, welche auf eine oder mehrere Tabellen oder Views abgebildet
-wird. Die Abbildung wird mit einer Select-Anweisung definiert. Die Daten der View werden erst zur
-Ausführungszeit aus den darunter liegenden Tabellendaten hergeleitet.
+A view is a virtual table mapped to one or more tables or views.
+The mapping is defined using a SELECT statement. The view's data is derived from the
+underlying table data only at runtime.
 
-Die Views erlauben es, dass verschiedene Benutzer die Daten unterschiedlich strukturiert sehen.
-Mit Views kann die Formulierung von Abfragen, die sich über mehrere Tabellen erstrecken, verein-
-facht werden. Views erlauben einen wirksamen Zugriffsschutz, da es möglich ist, Spalten der da-
-runterliegenden Tabellen auszublenden.
+Views allow different users to see the data structured differently.
+Views can simplify the formulation of queries spanning
+multiple tables. Views provide effective access control by allowing columns of the
+underlying tables to be hidden.
 
 ```sql
 CREATE VIEW mitarbeiter_public (id, name, tel) AS
@@ -1110,7 +1217,7 @@ CREATE VIEW mitarbeiter_public (id, name, tel) AS
 
 === Common table expressions
 
-Hilfs-Query in einer WITH-Klausel (Temporäre Tabellen während des Statements). Query-Name immer im FROM.
+Auxiliary query in a WITH clause (temporary tables during the statement). The query name always appears in FROM.
 
 // #corr([TODO:])
 
@@ -1129,7 +1236,7 @@ SELECT name AS "Mitarb.", bezeichnung AS "Projekt", zeitanteil AS "Zeit" FROM tm
 
 ==== Recursive
 
-Ein rekursives CTE referenziert sich selbst, um Teilmengen der Daten zurückzugeben, bis alle Ergebnisse erhalten sind.
+A recursive CTE references itself to return subsets of the data until all results have been obtained.
 
 ```sql
 WITH RECURSIVE untergebene(persnr, name, chef) AS (
@@ -1141,7 +1248,7 @@ WITH RECURSIVE untergebene(persnr, name, chef) AS (
 SELECT * FROM untergebene ORDER BY chef, persnr;
 ```
 
-== Funktionen
+== Functions
 
 ```sql
 CREATE PROCEDURE
@@ -1154,12 +1261,12 @@ EXEC
 //   Glossar: Zugriffsrechte, Sicherheit-in-Datenbanksystemen.
 // ])
 
-=== Benutzerverwaltung
+=== User management
 
 #pgdoc("https://www.postgresql.org/docs/current/sql-createrole.html")
 #pgdoc("https://www.postgresql.org/docs/current/user-manag.html")
 
-_ROLE_: Oberbegriff für Benutzer (_USER_) oder Gruppe (_GROUP_).
+_ROLE_: General term for a user (_USER_) or group (_GROUP_).
 
 ```sql
 CREATE ROLE user_name
@@ -1171,7 +1278,7 @@ SET ROLE user_name;
 DROP ROLE user_name;
 ```
 
-=== Berechtigungen
+=== Permissions
 
 #pgdoc("https://www.postgresql.org/docs/current/ddl-priv.html")
 
@@ -1182,13 +1289,13 @@ GRANT INSERT ON TABLE table_name TO user_name;
 REVOKE INSERT ON TABLE table_name TO user_name;
 ```
 
-==== Objekt
+==== Object
 
 ```sql
 ALTER ROLE user_name CREATEROLE, CREATEDB, INHERIT;
 ```
 
-=== Gruppen
+=== Groups
 
 ```sql
 CREATE ROLE manager;
@@ -1214,12 +1321,12 @@ DROP USER readonlyuser;
 
 === RBAC (Role-Based Access Control)
 
-Ist das, was oben erklärt wird.
+This is what is explained above.
 
 === RLS (Row-Level Security)
 
-- Check-Constraint auf Tabelle pro Rolle (sozusagen ein zusätzliches WHERE)
-- (Tipp: Aufpassen bei TRUNCATE, REFERENCES und VIEWS)
+- Check constraint on a table per role (effectively an additional WHERE)
+- (Tip: Take care with TRUNCATE, REFERENCES, and VIEWS)
 
 ```sql
 CREATE TABLE exams (
@@ -1244,45 +1351,63 @@ ENABLE ROW LEVEL SECURITY;
 #pgdoc("https://www.postgresql.org/docs/current/sql-prepare.html")
 // #corr("TODO")
 
-== Transaktionen
+== Transactions
 
-#deftbl(
+#deftblge(
   [Fault Tolerance],
-  [Bei Server-Crash kann Operation wiederholt werden oder wird ganz gecancelt (nicht nur Hälfte durchgeführt)],
+  [Fault Tolerance],
+  [In the event of a server crash, an operation can be repeated or is canceled entirely (rather than only partially executed)],
   [Concurrency],
-  [Isolation der Transaktionen, Parallelität wird ermöglicht.],
+  [Concurrency],
+  [Transaction isolation enables concurrent execution.],
   [MVCC (Multi-Version \ Concurrency Control)],
-  [Mehrere Transaktionen gleichzeitig verwalten, ohne dass es zu Konflikten kommt],
+  [MVCC (Multi-Version \ Concurrency Control)],
+  [Managing multiple transactions simultaneously without conflicts],
   [Locking],
-  [Ein Mechanismus zur Steuerung des Zugriffs auf Daten in einer Datenbank, der sicherstellt, dass nur eine Transaktion gleichzeitig auf bestimmte Daten zugreifen oder diese ändern kann, um Inkonsistenzen zu vermeiden.],
+  [Locking],
+  [A mechanism for controlling access to data in a database, ensuring that only one transaction at a time can access or modify certain data to avoid inconsistencies.],
   [2-Phasen- \ Sperrprotokoll],
-  [Ein Protokoll, das Transaktionen zwingt, zuerst alle erforderlichen Sperren zu erhalten (Phase 1) und danach keine neuen Sperren mehr zu setzen (Phase 2). Dies garantiert die Serialisierbarkeit der Transaktionen.],
+  [Two-phase \ locking protocol],
+  [A protocol that forces transactions to first acquire all required locks (phase 1) and then acquire no new locks (phase 2). This guarantees transaction serializability.],
   [Lost-Update],
-  [Ein Problem, das auftritt, wenn zwei Transaktionen denselben Datensatz lesen und ändern. Die Änderungen der ersten Transaktion gehen verloren, da die zweite Transaktion die Änderungen überschreibt, ohne sie zu berücksichtigen.],
+  [Lost-Update],
+  [A problem that occurs when two transactions read and modify the same record. The changes made by the first transaction are lost because the second transaction overwrites them without taking them into account.],
   [Non-Repeatable \ Read],
-  [Eine Situation, in der eine Transaktion einen Datensatz liest, und während dieser Transaktion ändert eine andere Transaktion denselben Datensatz. Ein späterer Lesevorgang in der ersten Transaktion könnte einen anderen Wert zurückgeben.],
+  [Non-Repeatable \ Read],
+  [A situation in which a transaction reads a record and another transaction modifies the same record during that transaction. A later read in the first transaction could return a different value.],
   [Optimistisches \ Lockverfahren],
-  [Ein Ansatz, bei dem Transaktionen ohne anfängliche Sperren operieren und am Ende überprüfen, ob ihre Änderungen gültig sind. Wenn Konflikte auftreten, werden Änderungen zurückgesetzt.],
+  [Optimistic \ locking],
+  [An approach in which transactions operate without initial locks and check at the end whether their changes are valid. If conflicts occur, changes are rolled back.],
   [Pessimistisches \ Lockverfahren],
-  [Ein Ansatz, bei dem Transaktionen sofort Sperren anfordern, um sicherzustellen, dass andere Transaktionen nicht gleichzeitig auf dieselben Daten zugreifen oder diese ändern.],
+  [Pessimistic \ locking],
+  [An approach in which transactions request locks immediately to ensure that other transactions cannot access or modify the same data simultaneously.],
   [Semantische \ Integrität],
-  [Die Sicherstellung, dass die Daten in der Datenbank nicht nur syntaktisch, sondern auch inhaltlich sinnvoll und korrekt sind, insbesondere nach Transaktionsoperationen.],
+  [Semantic \ integrity],
+  [Ensuring that data in the database is not only syntactically correct but also meaningful and correct in content, especially after transaction operations.],
   [SLOCK \ (Shared Lock)],
-  [Ein Sperrtyp, der mehreren Transaktionen das gleichzeitige Lesen von Daten erlaubt, jedoch das Schreiben während einer laufenden Transaktion verhindert.],
+  [SLOCK \ (Shared Lock)],
+  [A lock type that allows multiple transactions to read data simultaneously but prevents writing while a transaction is in progress.],
   [XLOCK \ (Exclusive Lock)],
-  [Ein Sperrtyp, der einer Transaktion das exklusive Lesen und Schreiben eines Datensatzes ermöglicht und allen anderen Transaktionen verbietet, darauf zuzugreifen, bis die Sperre aufgehoben wird.],
+  [XLOCK \ (Exclusive Lock)],
+  [A lock type that grants one transaction exclusive read and write access to a record and prevents all other transactions from accessing it until the lock is released.],
   [UNLOCK],
-  [Der Befehl oder die Aktion, um eine zuvor gesetzte Sperre aufzuheben, wodurch anderen Transaktionen der Zugriff auf die gesperrten Daten wieder ermöglicht wird.],
+  [UNLOCK],
+  [The command or action for releasing a previously acquired lock, allowing other transactions to access the locked data again.],
   [Starvation],
-  [Eine Situation, in der eine Transaktion aufgrund von Sperren oder anderen Contention-Mechanismen niemals die Möglichkeit erhält, ihre Arbeit abzuschließen, da sie ständig blockiert wird.],
+  [Starvation],
+  [A situation in which a transaction never gets the opportunity to complete its work because locks or other contention mechanisms keep blocking it.],
   [_A_ Atomicity],
-  [Vollständig oder gar nicht],
+  [_A_ Atomicity],
+  [All or nothing],
   [_C_ Consistency],
-  [Konsistenter Zustand bleibt erhalten],
+  [_C_ Consistency],
+  [A consistent state is preserved],
   [_I_ Isolation],
-  [Transaktion soll von anderen isoliert sein],
+  [_I_ Isolation],
+  [A transaction should be isolated from others],
   [_D_ Durability],
-  [Alle Änderungen sind persistent],
+  [_D_ Durability],
+  [All changes are persistent],
 )
 
 ```sql
@@ -1297,7 +1422,7 @@ BEGIN;
 ROLLBACK;
 ```
 
-=== Transaktionsisolation
+=== Transaction isolation
 
 #link("https://pgdash.io/blog/postgres-transactions.html")
 
@@ -1308,31 +1433,35 @@ REPEATABLE READ
 SERIALIZABLE
 ```
 
-==== Fehlertypen
+==== Error types
 
-#deftbl(
+#deftblge(
   [Dirty Read],
-  [Ein Dirty Read tritt auf, wenn eine Transaktion Daten liest, die von einer anderen, noch nicht abgeschlossenen Transaktion geändert wurden. Dies kann zu inkonsistenten Daten führen, da die ersten Änderungen möglicherweise später zurückgesetzt werden.],
+  [Dirty Read],
+  [A dirty read occurs when a transaction reads data modified by another transaction that has not yet completed. This can lead to inconsistent data, as the initial changes may later be rolled back.],
   [Fuzzy Read],
-  [Bei einem Fuzzy Read liest eine Transaktion Daten, die während ihrer Ausführung von anderen Transaktionen geändert werden. Dadurch kann die Transaktion unterschiedliche Werte lesen, wenn sie die gleiche Abfrage mehrmals ausführt.],
+  [Fuzzy Read],
+  [In a fuzzy read, a transaction reads data that other transactions modify during its execution. As a result, the transaction may read different values when it executes the same query multiple times.],
   [Phantom Read],
-  [Ein Phantom Read tritt auf, wenn eine Transaktion eine Abfrage ausführt, die aufgrund von Änderungen in einer anderen Transaktion neue Datensätze zurückgibt. Dies geschieht häufig, wenn neue Datensätze eingefügt werden, nachdem die Abfrage ursprünglich ausgeführt wurde.],
+  [Phantom Read],
+  [A phantom read occurs when a transaction executes a query that returns new records due to changes in another transaction. This often happens when new records are inserted after the query was originally executed.],
   [Serialization Anomaly],
-  [Diese Anomalie tritt auf, wenn die Ergebnisse von Transaktionen, die in einer bestimmten Reihenfolge ausgeführt werden, anders sind als die, die auftreten würden, wenn die Transaktionen seriell nacheinander in einer anderen Reihenfolge ausgeführt werden. Dies kann zu inkonsistenten Ergebnissen führen.],
+  [Serialization Anomaly],
+  [This anomaly occurs when the results of transactions executed in a particular order differ from those that would occur if the transactions were executed serially in a different order. This can lead to inconsistent results.],
 )
 
 ==== READ COMMITTED
 
-Standart-Isolationsstufe in PostgreSQL. \
-Jede Abfrage sieht nur Daten, die vor Beginn der Abfrage committed wurden. Verhindert "Dirty Reads"
+Default isolation level in PostgreSQL. \
+Each query sees only data committed before the query began. Prevents "Dirty Reads"
 
 ==== REPEATABLE READ
 
-Verhindert "Non-Repeatable Reads". Verwendet Snapshot-Isolation. Höherer Speicherbedarf durch Snapshots.
+Prevents "Non-Repeatable Reads". Uses snapshot isolation. Higher memory requirements due to snapshots.
 
 ==== SERIALIZABLE
 
-Falls die gleiche Spalte in mehreren Transaktionen UPDATEd wird, werden die Transaktionen abgebrochen (ausser die erste).
+If the same column is UPDATEd in multiple transactions, the transactions are aborted (except the first).
 
 === Savepoints
 
@@ -1347,33 +1476,41 @@ ROLLBACK TO SAVEPOINT savepoint1;
 COMMIT;
 ```
 
-=== Serialisierbarkeit
+=== Serializability
 
 #link("https://www.youtube.com/watch?v=01MDhIXiXIY")
 
-#deftbl(
+#deftblge(
   [Seriell],
-  [Wenn alle Transaktionen in einem Schedule geordnet sind],
+  [Serial],
+  [When all transactions in a schedule are ordered],
   [Konfliktäquivalent],
-  [Wenn die Rehenfolge aller Paare von konfligierenden Aktionen in beiden Schedules gleich ist],
+  [Conflict-equivalent],
+  [When the order of all pairs of conflicting actions is the same in both schedules],
   [Konfliktserialisierbar],
-  [Wenn ein Schedule konfliktäquivalent zu einem seriellen Schedule ist],
+  [Conflict-serializable],
+  [When a schedule is conflict-equivalent to a serial schedule],
 )
 // #corr("TODO: Serialisierbarkeitsgraph")
 
-== Backup und Recovery
+== Backup and Recovery
 
-#deftbl(
+#deftblge(
   [WAL (Write-Ahead-\ Logging)],
-  [Ein Protokollierverfahren, das sicherstellt, dass alle Änderungen an der Datenbank zunächst in einem Log gespeichert werden, bevor sie in die Datenbank geschrieben werden. Dies ermöglicht eine Wiederherstellung im Falle eines Fehlers],
+  [WAL (Write-Ahead-\ Logging)],
+  [A logging method that ensures all changes to the database are first stored in a log before being written to the database. This enables recovery in the event of a failure],
   [Physischer Backup],
-  [Eine Sicherung, die eine Kopie der gesamten Datenbankdateien (einschließlich der Logdateien) erstellt. Diese Art von Backup ist nützlich für die vollständige Wiederherstellung einer Datenbank],
+  [Physical backup],
+  [A backup that creates a copy of all database files (including log files). This type of backup is useful for restoring an entire database],
   [Logischer Backup],
-  [Eine Sicherung, die die Struktur und den Inhalt der Datenbank auf einer höheren Ebene abbildet, z. B. durch Exportieren von Tabellen als SQL-Skripte. Diese Art von Backup ist nützlich für die Migration zwischen Datenbanken],
+  [Logical backup],
+  [A backup that represents the structure and contents of the database at a higher level, e.g. by exporting tables as SQL scripts. This type of backup is useful for migration between databases],
   [Full Backup],
-  [Eine vollständige Sicherung, die alle Daten einer Datenbank zu einem bestimmten Zeitpunkt sichert. Dies ist die umfassendste Art von Backup und ermöglicht eine vollständige Wiederherstellung],
+  [Full Backup],
+  [A complete backup that saves all data in a database at a particular point in time. This is the most comprehensive type of backup and enables full recovery],
   [Incremental Backup],
-  [Eine Sicherung, die nur die Änderungen sichert, die seit dem letzten Backup (vollständig oder inkrementell) vorgenommen wurden. Dies spart Speicherplatz und verkürzt die Backup-Zeit],
+  [Incremental Backup],
+  [A backup that saves only changes made since the last backup (full or incremental). This saves storage space and reduces backup time],
 )
 
 // #corr([TODO:
