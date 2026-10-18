@@ -31,6 +31,42 @@
   }
 }
 
+#let deftblge(
+  ..body,
+  german-term: [German term],
+  term: [English term],
+  definition: auto,
+  did: none,
+  tags: (),
+) = context {
+  let term = if term == auto {
+    languages.at(text.lang).term
+  } else { term }
+  let definition = if definition == auto {
+    languages.at(text.lang).definition
+  } else { definition }
+
+  table(
+    columns: (1fr, 1fr, 2fr),
+    table-header(german-term, term, definition),
+    ..body,
+  )
+
+  if did != none {
+    body
+      .pos()
+      .chunks(3)
+      .map(((g, t, d)) => ta.add-note(
+        deck: did,
+        t,
+        d,
+        format: none,
+        tags: tags,
+      ))
+      .join()
+  }
+}
+
 // TODO: finish refactoring to use figure
 #let contentbox(
   color: colors.black,
@@ -330,6 +366,7 @@
     ..args,
   ),
   deftbl: deftbl.with(did: did),
+  deftblge: deftblge.with(did: did),
   defbox: defbox.with(did: did),
   exbox: exbox.with(did: did),
   frame: frame.with(did: did),
