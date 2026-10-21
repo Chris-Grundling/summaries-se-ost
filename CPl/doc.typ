@@ -1970,7 +1970,8 @@ enum class LaunchPolicy
 }
 ```]
 
-#todo[W6 S28..]
+#todo[W6 S28,34(addable),35,36]
+#todo[W6 39 and the cursedness of 40]
 
 #pagebreak()
 #bibliography("./cit.bib")
@@ -1979,3 +1980,4 @@ enum class LaunchPolicy
 // - what does "new" actually do
 // - summary s23
 // - non-overloadable: is ?: the ternary operator?
+// Is it possible to provide the overloads of `Date`'s constructors to allow writing `Date{1, Nov, 2012}` and `Date{Nov, 1, 2012}`?

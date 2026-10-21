@@ -1066,3 +1066,428 @@ Wahrscheinlichkeiten von Ereignissen mit $X$ berechnen kann.
   $
 
 #todo[MathFML, Verteilungsfunktion des Maximums]
+
+=== Mittelwert und Median
+
+#let num = 100
+
+#let xs = lq.linspace(0, 1, num: num)
+#let (rng, rys) = suiji.normal(rng, loc: .5, scale: 1, size: num)
+#let ys = range(num).map(i => (
+  (rys.slice(-i - 1).sum())
+    / num
+    * (if i > (num / 2) { i / (num / 2 + 5) } else { 1 })
+))
+#for i in range(num) {
+  ys.at(i) = if i == 0 { ys.at(i) } else if ys.at(i - 1) > ys.at(i) {
+    ys.at(i - 1)
+  } else { ys.at(i) }
+}
+
+#let med = ys.position(y => y > 0.5) / num
+#let avg = ys.position(y => y > ys.sum() / ys.len()) / num
+#let q75 = ys.position(y => y > 0.75) / num
+#let q25 = ys.position(y => y > 0.25) / num
+#v(1em)
+#diagram2d(
+  xlabel: $x$,
+  ylabel: $F$,
+  width: 100%,
+  height: 15em,
+  legend: (position: top + center),
+  yaxis: (ticks: (.25, .5, .75, 1)),
+  xaxis: (ticks: none),
+  ylim: (-.3, 1.1),
+  lq.line((0, 1), (1, 1)),
+  lq.line((0, .5), (1, .5)),
+  lq.line((0, .75), (1, .75), stroke: .5pt),
+  lq.line((0, .25), (1, .25), stroke: .5pt),
+  lq.line((q75, -.1), (q75, 1), stroke: colors-l.fg + 1.5pt),
+  lq.place(q75, -.15, $x_(0.75)$),
+  lq.line((q25, -.1), (q25, 1), stroke: colors-l.fg + 1.5pt),
+  lq.place(q25, -.15, $x_(0.25)$),
+  lq.line((q25, -.05), (q75, -.05), tip: tiptoe.stealth, toe: tiptoe.stealth),
+  lq.place(q25 + (q75 - q25) / 2, -.1, $Q = x_(0.75) - x_(0.25)$),
+  lq.line((1, -.3), (1, 1)),
+  lq.line((0, -.25), (1, -.25), tip: tiptoe.stealth, toe: tiptoe.stealth),
+  lq.place(0, -.35, $x_min$),
+  lq.place(1, -.35, $x_max$),
+  lq.place(.5, -.3, $R = x_max - x_min$),
+  lq.line(
+    (avg, 0),
+    (avg, 1),
+    stroke: colors.purple + 1.5pt,
+  ),
+  lq.place(avg, 1.1, tp[Mittelwert]),
+  lq.line((med, 0), (med, 1), stroke: colors.green + 1.5pt),
+  lq.place(med, 1.1, tg[Median]),
+  lq.plot(xs, ys, mark: none),
+)
+
+/ Mittelwert: $
+    "Allgemein": overline(x) = 1/n sum_(i=1)^n x_i, quad "minimiert"
+    sum_(i=1)^n (x_i - overline(x))^2 space "(Queadratische Abweichung)"
+  $
+/ Gewichteter Mittelwert: $
+    overline(x) = (sum_(i=1)^n w_i x_i)/(sum_(i=1)^n w_i), quad "minimiert"
+    sum_(i=1)^n w_i (x_i - overline(x))^2
+  $
+/ Modus / Modalwert: Häufigster Wert
+/ Spannweite: $R = x_max - x_min$
+/ Median: $x_(0.5)$
+/ Quartilabstand: $Q = x_(0.75) - x_(0.25)$
+
+/*
+#todo[diagram]
+  Verteilungsfunktion und Erwartungswert
+  $
+    E(X) approx & sum_(k = 0)^n xi_k dot (F(xi_(k+1)) - F(xi_k)) \
+             -> & integral xi dif F(xi) quad "Stieltjes-Integral" \
+          "mit" & abs(xi_(k+1) - xi_k) < epsilon, space "Fehler" approx O(epsilon)
+  $
+*/
+
+=== Riemann- und Stieltjes-Integral
+
+#let xs = lq.linspace(0, calc.pi * 5 / 4, num: 51)
+#let fn = x => (calc.cos(x) + 1.5) * (x + .5) - 1
+#let ys = xs.map(fn)
+#let wsi = xs.map(x => calc.sin(x / 1.5 + .3) - .2)
+#let ws = wsi.chunks(5, exact: true).map(ns => ns.sum() / 5)
+#let ysg = range(51).map(i => wsi.slice(-i - 1).sum())
+
+#{
+  let diagram2d = diagram2d.with(
+    xaxis: (ticks: none),
+    yaxis: (ticks: none),
+    width: 90%,
+  )
+  table(
+    columns: (1fr, 1fr),
+    [Riemann-Integral], [Stieltjes-Integral],
+    $
+      sum_i td(f(x_i)) dot tr((x_(i+1) - x_i)) -> integral td(f(x)) tr(dif x)
+    $,
+    $
+      sum_i td(f(x_i)) dot tr((g(x_(i+1)) - g(x_i))) -> integral td(f(x)) tr(dif g(x))
+    $,
+
+    {
+      v(1em)
+      align(center, diagram2d(
+        xlabel: $x$,
+        ylabel: $f(x)$,
+        ..range(10)
+          .map(i => {
+            let ifrom = i * 5
+            let ito = (i + 1) * 5
+            let yfrom = ys.at(ifrom)
+            let yto = ys.at(ito)
+            let xfrom = xs.at(ifrom)
+            let xto = xs.at(ito)
+            let (ylg, ysm) = if yfrom > yto { (yfrom, yto) } else {
+              (yto, yfrom)
+            }
+            (
+              lq.rect(
+                xfrom,
+                0,
+                width: xto - xfrom,
+                height: ylg,
+                fill: colors-l.purple.transparentize(50%),
+                stroke: colors.purple,
+              ),
+              lq.rect(
+                xfrom,
+                0,
+                width: xto - xfrom,
+                height: ysm,
+                fill: colors-l.purple.transparentize(50%),
+                stroke: colors.purple,
+              ),
+              lq.line(
+                (xfrom, .2),
+                (xto, .2),
+                tip: tiptoe.stealth,
+                toe: tiptoe.stealth,
+                stroke: colors.green,
+              ),
+            )
+          })
+          .join(),
+
+        lq.plot(xs, ys, mark: none),
+      ))
+    },
+
+    {
+      v(1em)
+      align(center, diagram2d(
+        xlabel: $x$,
+        ylabel: $f(x)$,
+        ..range(10)
+          .zip(ws)
+          .map(((i, w)) => {
+            let ifrom = i * 5
+            let ito = (i + 1) * 5
+            let yfrom = ys.at(ifrom)
+            let yto = ys.at(ito)
+            let xfrom = xs.at(ifrom)
+            let xto = xs.at(ito)
+            let (ylg, ysm) = if yfrom > yto { (yfrom, yto) } else {
+              (yto, yfrom)
+            }
+            let width = (xto - xfrom) * w
+            let xfrom2 = xfrom + ((xto - xfrom) * (1 - w)) / 2
+            let xto2 = xfrom2 + width
+            (
+              lq.rect(
+                xfrom,
+                0,
+                width: xto - xfrom,
+                height: ylg,
+                stroke: colors.purple,
+              ),
+              lq.rect(
+                xfrom,
+                0,
+                width: xto - xfrom,
+                height: ysm,
+                stroke: colors.purple,
+              ),
+              lq.rect(
+                xfrom2,
+                0,
+                width: width,
+                height: ylg,
+                fill: colors-l.purple.transparentize(50%),
+                stroke: colors.purple,
+              ),
+              lq.line(
+                (xfrom2, .2),
+                (xto2, .2),
+                tip: tiptoe.stealth,
+                toe: tiptoe.stealth,
+                stroke: colors.green,
+              ),
+            )
+          })
+          .join(),
+
+        lq.plot(xs, ys, mark: none),
+      ))
+    },
+
+    {
+      v(1em)
+      align(center, diagram2d(
+        xlabel: $x$,
+        ylabel: $y = x$,
+        ..range(10)
+          .map(i => {
+            let ifrom = i * 5
+            let ito = (i + 1) * 5
+            let xto = xs.at(ito)
+            let xfrom = xs.at(ifrom)
+            (
+              lq.line(
+                (xto, 0),
+                (xto, xto),
+                stroke: colors.red,
+              ),
+              lq.line(
+                (xfrom, xto),
+                (xto, xto),
+                stroke: colors.red,
+              ),
+              lq.line(
+                (xfrom, xto),
+                (xfrom, xfrom),
+                stroke: colors.green,
+                tip: tiptoe.stealth,
+                toe: tiptoe.stealth,
+              ),
+            )
+          })
+          .join(),
+        lq.plot(xs, xs, mark: none, stroke: colors.red),
+      ))
+    },
+
+    {
+      v(1em)
+      align(center, diagram2d(
+        xlabel: $x$,
+        ylabel: $y = g(x)$,
+        ..range(10)
+          .map(i => {
+            let ifrom = i * 5
+            let ito = (i + 1) * 5
+            let yto = ysg.at(ito)
+            let xto = xs.at(ito)
+            let yfrom = ysg.at(ifrom)
+            let xfrom = xs.at(ifrom)
+            (
+              lq.line(
+                (xto, 0),
+                (xto, yto),
+                stroke: colors.red,
+              ),
+              lq.line(
+                (xfrom, yto),
+                (xto, yto),
+                stroke: colors.red,
+              ),
+              lq.line(
+                (xfrom, yto),
+                (xfrom, yfrom),
+                stroke: colors.green,
+                tip: tiptoe.stealth,
+                toe: tiptoe.stealth,
+              ),
+            )
+          })
+          .join(),
+        lq.plot(
+          xs,
+          ysg,
+          mark: none,
+          stroke: colors.red,
+        ),
+      ))
+    },
+  )
+}
+
+=== Wahrscheinlichkeitsdichte
+
+Die Ableitung der Verteilungsfunktion heisst _Wahrscheinlichkeitsdichte_ (gibt
+es nur für stetige Zufallsvariablen).
+
+$
+         phi(x) = & dif/(dif x) F(x) = F'(x) \
+  P(a < X <= b) = & F(b) - F(a) = integral_a^b phi(x) dif x
+$
+
+
+#{
+  let xs = lq.linspace(-3, 3, num: 50)
+  let pfn = pdf(0, 1)
+  let cfn = cdf(0, 1)
+  let a = -1
+  let b = 1.5
+  let axs = xs.filter(x => x < a)
+  let bxs = xs.filter(x => x < b)
+  let abxs = xs.filter(x => x < b and x > a)
+  let diagram2d = diagram2d.with(
+    xaxis: (ticks: none),
+    yaxis: (ticks: none),
+    height: 5em,
+  )
+  grid(
+    columns: 2,
+    $ td(F(x)) $, $ tr(phi(x)) $,
+    grid.cell(rowspan: 3, diagram2d(
+      legend: (position: (0%, -5em)),
+      height: 12em,
+      lq.line((b, -.05), (b, cfn(b))),
+      lq.line((a, cfn(b)), (b, cfn(b))),
+      lq.place(a, -.1, $a$),
+      lq.place(b, -.1, $b$),
+      lq.line((a, -.05), (a, cfn(a))),
+      lq.plot(xs, xs.map(cfn), mark: none),
+      lq.plot(
+        (b,),
+        (cfn(b),),
+        stroke: none,
+        mark: mark => place(
+          center + horizon,
+          circle(fill: colors.green, stroke: colors.green, radius: 2.5pt),
+        ),
+        label: $P(X<=b)$,
+      ),
+      lq.line(
+        (a, cfn(a)),
+        (a, cfn(b)),
+        stroke: colors.purple + 2pt,
+        label: $P(a<X<=b) = F(b) - F(a)$,
+      ),
+      lq.plot(
+        (a,),
+        (cfn(a),),
+        stroke: none,
+        mark: mark => place(
+          center + horizon,
+          circle(fill: colors.red, stroke: colors.red, radius: 2.5pt),
+        ),
+        label: $P(X<=a)$,
+      ),
+    )),
+    diagram2d(
+      lq.fill-between(
+        bxs,
+        bxs.map(pfn),
+        y2: range(bxs.len()).map(_ => 0),
+        fill: colors-l.green,
+        label: $P(X<=b)$,
+      ),
+      lq.plot(xs, xs.map(pfn), mark: none, stroke: colors.red),
+    ),
+    diagram2d(
+      lq.fill-between(
+        abxs,
+        abxs.map(pfn),
+        y2: range(abxs.len()).map(_ => 0),
+        fill: colors-l.purple,
+        label: $P(a<=X<=b)$,
+      ),
+      lq.plot(xs, xs.map(pfn), mark: none, stroke: colors.red),
+    ),
+    diagram2d(
+      lq.fill-between(
+        axs,
+        axs.map(pfn),
+        y2: range(axs.len()).map(_ => 0),
+        fill: colors-l.red,
+        label: $P(X<=a)$,
+      ),
+      lq.plot(xs, xs.map(pfn), mark: none, stroke: colors.red),
+    ),
+  )
+}
+
+=== Erwartungswert
+
+/ Gegeben: Zufallsvariable $X$ mit Wahrscheinlichkeitsdichte $phi(x)$.
+/ Erwartungswert: $
+    E(tg(X)) = & td(sum) && tg("Wert") dot && tr("Wahrscheinlichkeit") \
+    = & td(integral_(-oo)^oo) && tg(x) && tr(phi(x) dif x) \
+    E(tg(X^2)) = & td(integral_(-oo)^oo) && tg(x^2) && tr(phi(x) dif x) \
+    E(tg(f(X))) = & td(integral_(-oo)^oo) && tg(f(x)) && tr(phi(x) dif x) \
+  $
+
+=== Gleichverteilung
+
+#todo[W6 S21..]
+
+=== Faltung
+
+#todo[]
+
+=== Summe stetiger Zufallsvariablen
+
+Sind $X$ und $Y$ unabhängige Zufallsvariable mit Wahrscheinlichkeitsdichte
+$phi_X (x)$ und $phi_Y (y)$, dann hat die Zufallsvariable $Z = X + Y$ die
+Wahrscheinlichkeitsdichte
+$
+  phi_Z (z) = phi_(X+Y) (z) = (phi_X * phi_Y) (z) = integral_(-oo)^oo phi_X (x) phi_Y (z - x) dif x
+$
+Für die Verteilungsfunktionen gilt
+$
+  F_Z (z) = F_(X+Y) (z) = & (F_X * phi_Y) (z) = integral_(-oo)^oo F_X (x) phi_Y (z - x) dif x \
+  = & (phi_X * F_Y) (z) = integral_(-oo)^oo phi_X (x) F_Y (z - x) dif x \
+$
+
+=== Summe von Gleichverteilungen
+
+#todo[]
